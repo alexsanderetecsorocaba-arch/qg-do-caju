@@ -107,6 +107,67 @@ select{font:600 15px var(--body);color:var(--marinho);background:#fff;border:2.5
 .bar .bv i{font-style:normal;color:var(--muted);font-size:12px}
 .bar .bt{grid-column:1/-1;height:14px;border:2px solid var(--marinho);border-radius:8px;background:var(--creme);overflow:hidden}
 .bar .bt b{display:block;height:100%;border-right:2px solid var(--marinho);min-width:6px}
+.sino{position:relative;align-self:flex-start;width:36px;height:32px;display:grid;place-items:center;background:none;border:2px solid var(--marinho);border-radius:10px;cursor:pointer;color:var(--marinho);transition:transform .2s ease}
+.sino svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sino b{position:absolute;top:-8px;right:-8px;min-width:19px;height:19px;padding:0 5px;border-radius:10px;background:var(--nariz);border:2px solid var(--marinho);color:var(--marinho);font:800 11px/15px var(--mono);transform:scale(0);transition:transform .35s cubic-bezier(.2,1.5,.4,1)}
+.sino.tem b{transform:scale(1)}
+.sino.tem svg{animation:shake 1s ease 1}
+.sinop{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .4s cubic-bezier(.2,.8,.2,1),opacity .3s ease;margin-top:-20px}
+.sinop.aberto{grid-template-rows:1fr;opacity:1;margin-top:0}
+.sinop>div{overflow:hidden;min-height:0}
+.sinop .panel{margin:2px 6px 8px 2px;padding:14px 16px}
+.sinop h2{margin:0 0 8px}
+.av{display:grid;grid-template-columns:10px minmax(0,1fr);gap:2px 10px;padding:9px 0;border-top:2px dashed var(--tracejado);font-size:14px}
+.av:first-of-type{border-top:0}
+.av i{width:9px;height:9px;border-radius:50%;margin-top:6px;background:transparent;border:2px solid var(--tracejado)}
+.av.novo i{background:var(--caju);border-color:var(--marinho)}
+.av b{font-weight:800}
+.av small{grid-column:2;color:var(--muted);font-size:13px;overflow-wrap:anywhere}
+body.escuro .sino{color:var(--e-txt);border-color:var(--e-linha)}
+body.escuro .sino b{border-color:var(--e-fundo);color:#111726}
+body.escuro .sinop .panel{background:var(--e-card);border-color:var(--e-linha);box-shadow:none}
+body.escuro .av{border-color:var(--e-linha)}body.escuro .av small{color:var(--e-sub)}
+.voto{border:2px dashed var(--tracejado);border-radius:12px;padding:12px;margin-bottom:14px;display:flex;flex-direction:column;gap:10px;font-size:14px}
+.voto .linha{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.carta-fundo{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(31,42,68,.62);opacity:0;transition:opacity .35s ease;overflow:auto}
+.carta-fundo.aberta{opacity:1}
+.carta{position:relative;width:min(100%,440px);min-height:min(620px,calc(100vh - 32px));background:var(--papel);border:4px solid var(--marinho);border-radius:26px;box-shadow:8px 8px 0 var(--marinho);padding:20px 22px 22px;display:flex;flex-direction:column;gap:14px;transform:translateY(28px) scale(.94);opacity:0;transition:transform .5s cubic-bezier(.2,.9,.25,1),opacity .35s ease}
+.carta-fundo.aberta .carta{transform:none;opacity:1}
+.carta-topo{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.carta-passo{font:700 12.5px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.carta-pontos{display:flex;gap:6px;margin-top:8px}
+.carta-pontos i{width:22px;height:6px;border-radius:3px;background:var(--tracejado);transition:background .4s ease,width .4s ease}
+.carta-pontos i.feito{background:var(--caju)}
+.carta-pontos i.agora{background:var(--marinho);width:34px}
+.carta-total{text-align:right;background:var(--creme);border:2.5px solid var(--marinho);border-radius:14px;padding:7px 11px;min-width:128px}
+.carta-total small{display:block;font:700 11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.carta-total b{font:800 19px var(--display);white-space:nowrap}
+.carta-in{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;transition:transform .34s cubic-bezier(.2,.8,.2,1),opacity .26s ease}
+.carta-in.sai-e{opacity:0;transform:translateX(-36px)}
+.carta-in.sai-d{opacity:0;transform:translateX(36px)}
+.carta-in.sem{transition:none}
+.carta-icone{width:132px;height:132px;border-radius:50%;background:var(--mel);border:4px solid var(--marinho);box-shadow:5px 5px 0 var(--marinho);display:grid;place-items:center;animation:flutua 4s ease-in-out infinite}
+.carta-icone svg{width:76px;height:76px;fill:none;stroke:var(--marinho);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+@keyframes flutua{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-7px) rotate(2deg)}}
+.carta-cat{font:800 30px/1.1 var(--display);margin:4px 0 0;overflow-wrap:anywhere}
+.carta-perg{margin:0;font-size:15.5px;color:var(--muted);max-width:30ch}
+.carta-valor{display:flex;align-items:center;gap:8px;margin-top:4px}
+.carta-valor .cx{display:flex;flex-direction:row;align-items:baseline;gap:6px;background:#fff;border:3px solid var(--marinho);border-radius:16px;padding:8px 14px;transition:box-shadow .2s ease}
+.carta-valor .cx:focus-within{box-shadow:4px 4px 0 var(--caju)}
+.carta-valor .cx span{font:700 18px var(--mono);color:var(--muted)}
+.carta-valor input{font:800 34px var(--display);color:var(--marinho);border:0;outline:0;background:transparent;width:5.2ch;text-align:center;padding:0}
+.carta-valor button{font:800 15px var(--mono);width:52px;height:52px;border-radius:50%;border:3px solid var(--marinho);background:var(--creme);color:var(--marinho);cursor:pointer;transition:transform .15s ease,background .2s ease}
+.carta-valor button:active{transform:scale(.9);background:var(--mel)}
+.carta-dica{margin:0;font:12.5px var(--mono);color:var(--muted)}
+.carta-erro{margin:0;min-height:18px;color:#b3404a;font-weight:700;font-size:13px}
+.carta-pe{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.carta-fim svg{width:84px;height:84px;fill:var(--caju)}
+.carta-fim{animation:stamp .5s cubic-bezier(.2,1.4,.4,1)}
+.bar .bf{grid-column:1/-1;font:12.5px var(--mono);color:var(--muted)}
+.bar.quase .bt b{background:var(--mel)}
+.bar.passou .bt b{background:var(--nariz)}
+.bar.passou .bf{color:#b3404a;font-weight:700}
+.bar.livre .bt b{background:#8fc98a}
 .row .d{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
 .row .t{overflow-wrap:anywhere}
 .row .t small{display:block;font-size:12px;color:var(--muted)}
@@ -186,7 +247,8 @@ body.escuro .abas button[aria-pressed="true"]{background:var(--e-card2);color:va
 .e-orc .o .x{font-family:var(--mono);white-space:nowrap}
 .e-orc .o .x i{font-style:normal;color:var(--e-sub)}
 .e-orc .o .t{grid-column:1/-1;height:6px;border-radius:3px;background:var(--e-card2);overflow:hidden}
-.e-orc .o .t b{display:block;height:100%;border-radius:3px;background:var(--e-ambar)}
+.e-orc .o .t b{display:block;height:100%;border-radius:3px;background:var(--e-ok)}
+.e-orc .o.quase .t b{background:var(--e-ambar)}
 .e-orc .o.passou .t b{background:var(--e-ruim)}
 .e-orc .o .f{grid-column:1/-1;font:12px var(--mono);color:var(--e-sub)}
 .e-orc .o.passou .f{color:var(--e-ruim)}
@@ -290,8 +352,10 @@ body.escuro .abas button[aria-pressed="true"]{background:var(--e-card2);color:va
       <h1>QG do <span>Caju</span></h1>
       <p class="hello"><span id="oi"></span><small>Contas, planos e o resto da vida a dois, sob supervisão felina.</small></p>
     </div>
+    <button class="sino" id="btnSino" type="button" aria-label="Avisos" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg><b id="sinoN"></b></button>
     <button class="sair" id="btnSair" type="button">Sair</button>
   </header>
+  <div class="sinop" id="sinoPainel" aria-live="polite"><div><section class="panel"><h2>Avisos</h2><div id="sinoLista"></div><div class="voto" id="pushCaixa" hidden style="margin:12px 0 0"></div></section></div></div>
 
   <div class="abas" id="abas" role="group" aria-label="O que ver" hidden>
     <button type="button" data-aba="casal" aria-pressed="true">Casal</button>
@@ -320,6 +384,13 @@ body.escuro .abas button[aria-pressed="true"]{background:var(--e-card2);color:va
     </div>
     <div class="stamp" id="stamp" hidden aria-hidden="true"><div><svg><use href="#paw"/></svg>PAGO<small id="stampData"></small></div></div>
     <div class="divisao" id="divisao"></div>
+  </section>
+
+  <section class="panel lista" id="limPainel" hidden>
+    <h2>Limites do casal</h2>
+    <p class="explica" id="limExplica"></p>
+    <div class="voto" id="limVoto" hidden></div>
+    <div class="grafico" id="limites"></div>
   </section>
 
   <section class="panel lista">
@@ -380,6 +451,7 @@ body.escuro .abas button[aria-pressed="true"]{background:var(--e-card2);color:va
     </div>
   </div>
 </div>
+<div class="carta-fundo" id="cartaFundo" role="dialog" aria-modal="true" aria-label="Limites do mês" hidden><div class="carta" id="carta"></div></div>
 <div class="paws" id="paws" aria-hidden="true"></div>
 
 <script>
@@ -424,7 +496,7 @@ function chamar(fn, args) {
 function servidor(ok, falha) {
   var erro = falha || function (e) { mostrarLogin('Deu erro: ' + (e && e.message ? e.message : e), true); };
   var api = {};
-  ['entrar', 'sair', 'dados', 'marcarPago', 'editarLancamento', 'buscarCompras', 'situacao', 'repassar', 'atualizarPessoal', 'classificarExtrato'].forEach(function (fn) {
+  ['entrar', 'sair', 'dados', 'marcarPago', 'editarLancamento', 'buscarCompras', 'votarLimites', 'registrarPush', 'situacao', 'repassar', 'atualizarPessoal', 'classificarExtrato'].forEach(function (fn) {
     api[fn] = function () { chamar(fn, Array.prototype.slice.call(arguments)).then(ok, erro); };
   });
   return api;
@@ -435,6 +507,9 @@ var cajuApp = $('cajuApp').querySelector('.caju');
 
 /* ====== Login ====== */
 function mostrarLogin(fala, erro) {
+  fecharCarta(); estado.cartaVista = false;
+  $('sinoPainel').classList.remove('aberto'); $('sinoLista').innerHTML = '';
+  estado.pushRenovado = false;
   $('carregando').hidden = true; $('app').hidden = true; $('telaLogin').hidden = false; document.body.classList.remove('escuro');
   $('falaLogin').textContent = fala || 'Miau. Quem é?';
   $('falaLogin').classList.toggle('erro', !!erro);
@@ -465,7 +540,7 @@ function receber(r, manterMes) {
     return mostrarLogin(r.erro, true);
   }
   var chaveAntes = manterMes && estado.meses[estado.atual] ? estado.meses[estado.atual].chave : null;
-  estado.usuario = r.usuario; estado.meses = r.meses; estado.categorias = r.categorias || []; estado.bancos = r.bancos || '';
+  estado.usuario = r.usuario; estado.meses = r.meses; estado.categorias = r.categorias || []; estado.bancos = r.bancos || ''; estado.limites = r.limites || null; estado.semana = r.semana || null; estado.vapid = r.vapid || '';
   estado.atual = r.entrada || 0;
   r.meses.forEach(function (m, i) { if (m.chave === chaveAntes) estado.atual = i; });
   if (!manterMes) { estado.filtro = 'parte'; estado.editando = null; }
@@ -491,7 +566,7 @@ function trocarAba(qual) {
   if (qual === 'casal') limparMeu();
 }
 function limparMeu() {   // não deixa nada do Alex sobrando na página depois que ele sai da aba ou da conta
-  meu.dados = null; meu.pedido++;
+  meu.dados = null; meu.aviso = ''; meu.pedido++;
   MEU_IDS.forEach(function (id) { $(id).innerHTML = ''; });
   $('meuCorpo').hidden = true; document.body.classList.remove('escuro');
 }
@@ -527,7 +602,7 @@ function orcamento(t) {
   t.itens.forEach(function (x) {
     var passou = x.b > x.a + 0.004;
     var pct = x.a > 0 ? Math.min(100, x.b / x.a * 100) : (x.b > 0 ? 100 : 0);
-    h += '<div class="o' + (passou ? ' passou' : '') + '"><span class="n">' + esc(x.nome) + '</span><span class="x">' + brl(x.b) + ' <i>/ ' + brl(x.a) + '</i></span>' +
+    h += '<div class="o' + (passou ? ' passou' : pct >= 80 ? ' quase' : '') + '"><span class="n">' + esc(x.nome) + '</span><span class="x">' + brl(x.b) + ' <i>/ ' + brl(x.a) + '</i></span>' +
          '<div class="t"><b style="width:' + pct.toFixed(1) + '%"></b></div><span class="f">' + (passou ? 'passou ' + brl(x.b - x.a) : 'falta ' + brl(x.a - x.b)) + '</span></div>';
   });
   return h + '</div>';
@@ -612,9 +687,11 @@ $('meuBuscar').addEventListener('click', function () {
   servidor(function (r) {
     if (!meu.dados) return fim();
     if (r.erro === 'sessao') { estado.token = null; guardar(null); limparMeu(); return mostrarLogin(); }
+    var x = r.extrato || {};
+    meu.aviso = !r.ok ? (r.erro || 'O servidor não conseguiu buscar.') : (x.erros && x.erros.length ? 'Algum banco não respondeu: ' + x.erros[0] : 'Busca feita: ' + (x.novas || 0) + ' movimentações novas, ' + (x.pendentes || 0) + ' para classificar.');
+    meu.avisoErro = !r.ok || !!(x.erros && x.erros.length);
     fim(); buscarMeu(mes, true);
-    if (!r.ok) setTimeout(function () { $('meuRodape').textContent = r.erro; }, 0);
-  }, function (e) { fim('Deu erro: ' + (e && e.message ? e.message : e)); }).atualizarPessoal(estado.token);
+  }, function (e) { meu.aviso = 'Deu erro ao buscar no banco: ' + (e && e.message ? e.message : e); meu.avisoErro = true; fim(); if (meu.dados) desenharMeu(); }).atualizarPessoal(estado.token);
 });
 function desenharMeu() {
   var d = meu.dados, r = d.resumo, s = d.saida;
@@ -630,6 +707,8 @@ function desenharMeu() {
     kpi('Saldo restante real', '<span class="' + sinal(r.saldoReal).trim() + '">' + brl(r.saldoReal) + '</span>', 'estimado ' + brl(r.saldoEst), 'dest');
 
   var rp = d.repasse || {}, nota = '';
+  if (meu.aviso) nota += '<span' + (meu.avisoErro ? ' class="e-neg"' : '') + '>' + esc(meu.aviso) + '</span>';
+  if (d.erroFila) nota += '<span class="e-neg">Não consegui ler a fila do extrato: ' + esc(d.erroFila) + '</span>';
   if (rp.erro) nota += '<span>Não consegui conferir o repasse do cartão: ' + esc(rp.erro) + '</span>';
   if (rp.esperando > 0) nota += '<span><b>' + rp.esperando + '</b> ' + (rp.esperando === 1 ? 'compra do cartão do casal está esperando' : 'compras do cartão do casal estão esperando') + ' para entrar na sua planilha.</span><button class="e-btn" id="meuRepassar" type="button">Lançar na minha planilha</button>';
   if (rp.semCategoria > 0) nota += '<span>' + rp.semCategoria + (rp.semCategoria === 1 ? ' compra sua está' : ' compras suas estão') + ' sem categoria na aba Casal e por isso ainda não ' + (rp.semCategoria === 1 ? 'entra' : 'entram') + ' aqui.</span>';
@@ -703,6 +782,8 @@ function desenhar(animar) {
   var T = TEXTOS[estado.usuario.papel] || TEXTOS.alex;
   $('oi').textContent = T.oi;
   var meses = estado.meses, m = meses[estado.atual];
+  desenharLimites();
+  if (!$('sinoPainel').classList.contains('aberto')) desenharSino();
 
   $('months').innerHTML = meses.map(function (x, i) {
     return '<button type="button" data-i="' + i + '" aria-pressed="' + (i === estado.atual) + '">' + esc(x.nome) + (x.pago ? ' ✓' : '') + '</button>';
@@ -762,7 +843,7 @@ function desenhar(animar) {
   }).join('') : '<p class="vazio">Nada por aqui neste mês.</p>';
 
   var eu = T.eu;
-  $('rows').innerHTML = pares.length ? pares.map(function (p) {
+  $('rows').innerHTML = pares.length ? pares.slice().reverse().map(function (p) {   // a mais recente primeiro
     var x = p.x;
     var chip = x.antiga ? ['parcela', 'antiga'] : x.quem === 'Casal' ? ['casal', 'casal'] : x.quem === eu ? ['seu', 'propria'] : ['dela', 'propria'];
     var extra = x.quem !== 'Casal' ? '' : estado.filtro === 'casal' ? 'sua metade ' + brl(minhaParte(x)) : 'compra de ' + brl(x.compra);
@@ -775,12 +856,237 @@ function desenhar(animar) {
   }).join('') : '<p class="vazio">Nada lançado neste filtro ainda.</p>';
 }
 
+function desenharLimites() {
+  var L = estado.limites;
+  $('limPainel').hidden = !L;
+  if (!L) return;
+  $('limExplica').textContent = 'O que vocês gastaram juntos em ' + L.mes + ', pelo dia da compra. ' +
+    (L.dias === 1 ? 'Hoje é o último dia do mês.' : 'Faltam ' + L.dias + ' dias para o mês virar.') +
+    (L.semDono ? ' ' + L.semDono + (L.semDono === 1 ? ' compra sem dono ainda não entrou na conta.' : ' compras sem dono ainda não entraram na conta.') : '');
+  var V = L.voto || {}, outro = estado.usuario.papel === 'alex' ? 'a Valesca' : 'o Alex';
+  var caixa = $('limVoto'); caixa.hidden = false;
+  caixa.innerHTML = '<span>' + (!V.eu ? 'Falta a sua opinião sobre os limites de ' + esc(L.mes) + '. Quando os dois responderem, vale a média.'
+    : V.fechado ? 'Os dois responderam: o limite de ' + esc(L.mes) + ' é a média de vocês.'
+    : 'Sua resposta está guardada. Falta ' + outro + ' responder; até lá vale o limite que já estava.') + '</span>' +
+    '<div class="linha"><button type="button" class="' + (V.eu ? 'sair' : 'btn mini') + '" id="votoAbrir">' + (V.eu ? 'Mudar minha resposta' : 'Responder agora') + '</button></div>';
+  if (!V.eu && !estado.cartaVista) { estado.cartaVista = true; setTimeout(abrirCarta, 500); }
+  $('limites').innerHTML = L.itens.map(function (x) {
+    var sobra = x.limite - x.gasto, pct = Math.min(100, x.gasto / x.limite * 100);
+    var classe = sobra < -0.004 ? 'passou' : pct >= 80 ? 'quase' : 'livre';
+    var fala = sobra < -0.004 ? 'passou ' + brl(-sobra) : 'sobram ' + brl(sobra) + (L.dias > 1 && sobra > 0 ? ', uns ' + brl(sobra / L.dias) + ' por dia' : '');
+    return '<div class="bar ' + classe + '"><span class="bn">' + esc(x.cat) + '</span><span class="bv">' + brl(x.gasto) + ' <i>de ' + brl(x.limite) + '</i></span>' +
+      '<div class="bt"><b style="width:' + pct.toFixed(1) + '%"></b></div><span class="bf">' + fala + '</span></div>';
+  }).join('');
+}
+/* ---------- Sininho: o que mudou desde a última vez que esta pessoa abriu ---------- */
+function vistos(novo) {
+  var k = 'qg_vistos_' + estado.usuario.papel;
+  try {
+    if (novo) { localStorage.setItem(k, JSON.stringify(novo.slice(-600))); return novo; }
+    var v = JSON.parse(localStorage.getItem(k) || 'null'); return Array.isArray(v) ? v : null;
+  } catch (e) { return novo || estado.vistosMem || null; }
+}
+function montarAvisos() {
+  var L = estado.limites, lista = [], compras = [], sem = 0, outro = estado.usuario.papel === 'alex' ? 'a Valesca' : 'o Alex';
+  estado.meses.forEach(function (m) { m.itens.forEach(function (x) {
+    if (x.antiga || x.k !== 1) return;
+    if (!x.quem) sem++;
+    compras.push({ id: 'c|' + x.data + '|' + x.desc + '|' + x.compra + '|' + x.n, x: x });
+  }); });
+  var ja = vistos();
+  if (!ja) { ja = compras.map(function (c) { return c.id; }); vistos(ja); estado.vistosMem = ja; }   // primeira vez neste aparelho: nada antigo vira novidade
+  var visto = {}; ja.forEach(function (id) { visto[id] = true; });
+  var por = function (id, titulo, detalhe) { lista.push({ id: id, t: titulo, d: detalhe, novo: !visto[id] }); };
+
+  if (L && L.voto && !L.voto.eu) por('voto|' + L.mes, 'Falta a sua opinião sobre os limites de ' + L.mes, 'Toque em "Responder agora" no quadro de limites.');
+  if (L && L.voto && L.voto.fechado) por('media|' + L.mes, 'Limites de ' + L.mes + ' fechados', 'Os dois responderam e a média já está valendo.');
+  if (L) L.itens.forEach(function (x) {
+    var p = x.gasto / x.limite;
+    if (p > 1.0001) por('lim|' + L.mes + '|' + x.cat + '|passou', x.cat + ' passou do limite', brl(x.gasto) + ' de ' + brl(x.limite) + ', ' + brl(x.gasto - x.limite) + ' a mais.');
+    else if (p >= 0.8) por('lim|' + L.mes + '|' + x.cat + '|80', x.cat + ' chegou em ' + Math.round(p * 100) + '% do limite', 'Sobram ' + brl(x.limite - x.gasto) + ' para ' + L.dias + (L.dias === 1 ? ' dia.' : ' dias.'));
+  });
+  if (sem) por('sem|' + sem, sem + (sem === 1 ? ' compra esperando' : ' compras esperando') + ' classificação', 'Diga de quem é em "Para classificar".');
+  var novas = compras.filter(function (c) { return !visto[c.id]; });
+  if (novas.length) lista.push({ ids: novas.map(function (c) { return c.id; }), novo: true,
+    t: novas.length + (novas.length === 1 ? ' compra nova' : ' compras novas'),
+    d: novas.slice(-6).reverse().map(function (c) { return c.x.data + ' ' + c.x.desc + ' ' + brl(c.x.compra * c.x.n); }).join(' · ') + (novas.length > 6 ? ' · e mais ' + (novas.length - 6) : '') });
+  var S = estado.semana;
+  if (S) por('semana|' + S.chave, 'Semana de ' + S.de + ' a ' + S.ate, 'Juntos vocês gastaram ' + brl(S.casal) + ' (sua metade ' + brl(S.casal / 2) + '). Só seu: ' + brl(S.meu) + '.');
+  return lista;
+}
+function desenharSino() {
+  desenharPush();
+  var lista = estado.avisos = montarAvisos(), n = lista.filter(function (a) { return a.novo; }).length;
+  $('sinoN').textContent = n > 9 ? '9+' : n || '';
+  $('btnSino').classList.toggle('tem', n > 0);
+  $('btnSino').setAttribute('aria-label', n ? 'Avisos, ' + n + (n === 1 ? ' novo' : ' novos') : 'Avisos');
+  $('sinoLista').innerHTML = lista.length ? lista.map(function (a) {
+    return '<div class="av' + (a.novo ? ' novo' : '') + '"><i></i><b>' + esc(a.t) + '</b><small>' + esc(a.d) + '</small></div>';
+  }).join('') : '<p class="vazio">Nada de novo por aqui.</p>';
+}
+
+/* ---------- Notificação no celular (push). Só existe no app instalado, nunca dentro da planilha. ---------- */
+var FIREBASE = { apiKey: 'AIzaSyAWSQiZgN7tVcjjtnnkKSNkKR7WY23EbL4', authDomain: 'qjcaju.firebaseapp.com', projectId: 'qjcaju', storageBucket: 'qjcaju.firebasestorage.app', messagingSenderId: '599835245481', appId: '1:599835245481:web:62db4f687da42027a4a2b8' };
+function pushPossivel() { return !!(estado.vapid && window.QG_API && 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window); }
+function carregarScript(src) { return new Promise(function (ok, falha) { var s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = function () { falha(new Error('sem internet para ligar as notificações')); }; document.head.appendChild(s); }); }
+function ligarPush() {
+  var base = 'https://www.gstatic.com/firebasejs/10.14.1/';
+  var pronto = window.firebase && firebase.messaging ? Promise.resolve() : carregarScript(base + 'firebase-app-compat.js').then(function () { return carregarScript(base + 'firebase-messaging-compat.js'); });
+  return pronto.then(function () {
+    if (!firebase.apps.length) firebase.initializeApp(FIREBASE);
+    return navigator.serviceWorker.ready;
+  }).then(function (reg) {
+    return firebase.messaging().getToken({ vapidKey: estado.vapid, serviceWorkerRegistration: reg });
+  }).then(function (aparelho) {
+    if (!aparelho) throw new Error('o celular não liberou');
+    return chamar('registrarPush', [estado.token, aparelho]);
+  }).then(function (r) { if (!r.ok) throw new Error(r.erro); try { localStorage.setItem('qg_push', estado.usuario.papel); } catch (e) {} });
+}
+function desenharPush(msg) {
+  var cx = $('pushCaixa');
+  if (!pushPossivel()) { cx.hidden = true; return; }
+  var ligado = false; try { ligado = Notification.permission === 'granted' && localStorage.getItem('qg_push') === estado.usuario.papel; } catch (e) {}
+  cx.hidden = false;
+  cx.innerHTML = Notification.permission === 'denied' ? '<span>As notificações estão bloqueadas neste celular. Para ligar, libere nas configurações do app.</span>'
+    : ligado ? '<span>Notificações ligadas neste celular.</span>'
+    : '<span>' + esc(msg || 'Quer ser avisado no celular quando chegar compra nova ou um limite apertar?') + '</span><div class="linha"><button type="button" class="btn mini" id="pushLigar">Ativar notificações neste celular</button></div>';
+  if (ligado && !estado.pushRenovado) { estado.pushRenovado = true; ligarPush().catch(function () {}); }   // mantém o endereço do aparelho em dia
+}
+document.addEventListener('click', function (ev) {
+  if (!ev.target || ev.target.id !== 'pushLigar') return;
+  var b = ev.target; b.disabled = true; b.textContent = 'Ligando…';
+  Notification.requestPermission().then(function (p) {
+    if (p !== 'granted') throw new Error('sem permissão');
+    return ligarPush();
+  }).then(function () { desenharPush(); }, function (e) { desenharPush(Notification.permission === 'denied' ? '' : 'Não deu para ligar (' + (e && e.message ? e.message : e) + '). Tenta de novo.'); });
+});
+$('btnSino').addEventListener('click', function () {
+  var abrir = !$('sinoPainel').classList.contains('aberto');
+  $('sinoPainel').classList.toggle('aberto', abrir); this.setAttribute('aria-expanded', abrir);
+  if (abrir) {   // abriu, leu: zera o contador (as bolinhas laranja ficam até fechar)
+    var ja = vistos() || [];
+    (estado.avisos || []).forEach(function (a) { (a.ids || [a.id]).forEach(function (id) { if (ja.indexOf(id) < 0) ja.push(id); }); });
+    vistos(ja); estado.vistosMem = ja;
+    $('sinoN').textContent = ''; this.classList.remove('tem');
+  } else desenharSino();
+});
+
+/* ---------- Carta dos limites: uma categoria por vez ---------- */
+var ICONES = {
+  mercado: '<path d="M3 4h2.5l2.2 10.5h9.6L19.5 7H7"/><circle cx="9.5" cy="18.5" r="1.4"/><circle cx="16" cy="18.5" r="1.4"/>',
+  restaurante: '<path d="M7 3v7a2 2 0 0 0 2 2v9M5 3v5M9 3v5M11 3v7a2 2 0 0 1-2 2"/><path d="M17 21v-8h-2.5V7c0-2.2 1.1-4 2.5-4z"/>',
+  lazer: '<path d="M12 20s-7-4.4-7-9.6A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.4C19 15.6 12 20 12 20z"/><path d="M16.5 3.5l.6 1.5 1.5.6-1.5.6-.6 1.5-.6-1.5-1.5-.6 1.5-.6z"/>',
+  transporte: '<path d="M4 16V11l2-5h12l2 5v5"/><path d="M3 16h18v2H3zM6 18v2M18 18v2M4 11h16"/><circle cx="7.5" cy="13.5" r=".8"/><circle cx="16.5" cy="13.5" r=".8"/>',
+  casa: '<path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10M10 20v-6h4v6"/>',
+  pets: '<ellipse cx="12" cy="16" rx="4.5" ry="3.8"/><ellipse cx="6" cy="11" rx="1.8" ry="2.4"/><ellipse cx="9.5" cy="7" rx="1.8" ry="2.5"/><ellipse cx="14.5" cy="7" rx="1.8" ry="2.5"/><ellipse cx="18" cy="11" rx="1.8" ry="2.4"/>',
+  assinatura: '<rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4M10 9l5 2.5-5 2.5z"/>',
+  saude: '<path d="M12 20s-7-4.4-7-9.6A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.4C19 15.6 12 20 12 20z"/><path d="M12 10.5v4M10 12.5h4"/>',
+  outro: '<circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5c-.5-1-1.4-1.5-2.5-1.5-1.5 0-2.5.8-2.5 2s1 1.7 2.5 2 2.5.8 2.5 2-1 2-2.5 2c-1.2 0-2.1-.5-2.6-1.5M12 6.5V8M12 16v1.5"/>'
+};
+function iconeDe(cat) {
+  var c = String(cat).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  var k = /mercado/.test(c) ? 'mercado' : /restaurante|delivery|comida/.test(c) ? 'restaurante' : /lazer|relacionamento|role/.test(c) ? 'lazer' : /transporte|uber|gasolina/.test(c) ? 'transporte' :
+    /casa|moradia/.test(c) ? 'casa' : /pet/.test(c) ? 'pets' : /assinatura|digita/.test(c) ? 'assinatura' : /saude|estetic/.test(c) ? 'saude' : 'outro';
+  return '<svg viewBox="0 0 24 24" aria-hidden="true">' + ICONES[k] + '</svg>';
+}
+var carta = null;
+function lerValor(t) { var v = Number(String(t).replace(/\./g, '').replace(',', '.')); return v > 0 ? Math.round(v * 100) / 100 : 0; }
+function somaCarta() { return carta.valores.reduce(function (s, v) { return s + (v || 0); }, 0); }
+function animarTotal() {
+  var el = $('cartaTotal'); if (!el) return;
+  var de = carta.mostrado || 0, para = somaCarta(), t0 = null;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches || Math.abs(para - de) < 0.01) { carta.mostrado = para; el.textContent = brl(para); return; }
+  cancelAnimationFrame(carta.raf);
+  (function passo(t) {
+    if (!carta) return;
+    if (t0 === null) t0 = t || performance.now();
+    var k = Math.min(1, ((t || t0) - t0) / 450), e = 1 - Math.pow(1 - k, 3);
+    carta.mostrado = de + (para - de) * e; el.textContent = brl(carta.mostrado);
+    if (k < 1) carta.raf = requestAnimationFrame(passo); else carta.mostrado = para;
+  })();
+}
+function abrirCarta() {
+  var L = estado.limites; if (!L || carta || $('app').hidden) return;
+  carta = { i: 0, valores: L.itens.map(function (x) { return x.meu || 0; }), mostrado: 0 };
+  $('carta').innerHTML = '<div class="carta-topo"><div><div class="carta-passo" id="cartaPasso"></div><div class="carta-pontos" id="cartaPontos">' + L.itens.map(function () { return '<i></i>'; }).join('') + '</div></div>' +
+    '<div class="carta-total"><small>Você já declarou</small><b id="cartaTotal">' + brl(0) + '</b></div></div>' +
+    '<div class="carta-in" id="cartaIn"></div>' +
+    '<div class="carta-pe"><button type="button" class="sair" id="cartaVoltar"></button><button type="button" class="btn" id="cartaProx"></button></div>';
+  var f = $('cartaFundo'); f.hidden = false; void f.offsetWidth; f.classList.add('aberta');
+  passoCarta(); animarTotal();
+}
+function fecharCarta() {
+  if (!carta) return;
+  cancelAnimationFrame(carta.raf); carta = null;
+  var f = $('cartaFundo'); f.classList.remove('aberta');
+  setTimeout(function () { if (!carta) { f.hidden = true; $('carta').innerHTML = ''; } }, 380);
+}
+function passoCarta() {
+  var L = estado.limites, x = L.itens[carta.i], n = L.itens.length, v = carta.valores[carta.i];
+  $('cartaPasso').textContent = 'Pergunta ' + (carta.i + 1) + ' de ' + n;
+  [].forEach.call($('cartaPontos').children, function (p, k) { p.className = k < carta.i ? 'feito' : k === carta.i ? 'agora' : ''; });
+  $('cartaIn').innerHTML = '<div class="carta-icone">' + iconeDe(x.cat) + '</div><h3 class="carta-cat">' + esc(x.cat) + '</h3>' +
+    '<p class="carta-perg">Na sua opinião, qual o melhor limite para vocês dois gastarem com isso em ' + esc(L.mes) + '?</p>' +
+    '<div class="carta-valor"><button type="button" data-passo="-50" aria-label="Menos 50">−50</button><div class="cx"><span>R$</span><input id="cartaValor" type="text" inputmode="numeric" autocomplete="off" aria-label="Limite em reais" value="' + (v ? String(v).replace('.', ',') : '') + '" placeholder="0"></div><button type="button" data-passo="50" aria-label="Mais 50">+50</button></div>' +
+    '<p class="carta-dica">Hoje o limite é ' + brl(x.limite) + '. Em ' + esc(L.mes) + ' vocês já gastaram ' + brl(x.gasto) + '.</p><p class="carta-erro" id="cartaErro"></p>';
+  $('cartaVoltar').textContent = carta.i ? 'Voltar' : 'Agora não';
+  $('cartaProx').textContent = carta.i === n - 1 ? 'Concluir' : 'Próxima'; $('cartaProx').disabled = false;
+  if (!('ontouchstart' in window)) setTimeout(function () { var c = $('cartaValor'); if (c) c.focus(); }, 380);
+}
+function trocarCarta(para) {
+  var el = $('cartaIn'), indo = para > carta.i;
+  el.classList.add(indo ? 'sai-e' : 'sai-d');
+  setTimeout(function () {
+    if (!carta) return;
+    carta.i = para; passoCarta();
+    el.classList.add('sem'); el.classList.remove('sai-e', 'sai-d'); el.classList.add(indo ? 'sai-d' : 'sai-e'); void el.offsetWidth;
+    el.classList.remove('sem', 'sai-e', 'sai-d');
+  }, 240);
+}
+function avancarCarta() {
+  var L = estado.limites, v = lerValor($('cartaValor').value);
+  if (!v) { $('cartaErro').textContent = 'Coloque um valor para continuar.'; return; }
+  carta.valores[carta.i] = v; animarTotal();
+  if (carta.i < L.itens.length - 1) return trocarCarta(carta.i + 1);
+  var resp = {}; L.itens.forEach(function (x, k) { resp[x.cat] = carta.valores[k]; });
+  var b = $('cartaProx'); b.disabled = true; b.textContent = 'Guardando…';
+  servidor(function (r) {
+    if (!r.ok && r.erro !== 'sessao') { b.disabled = false; b.textContent = 'Concluir'; $('cartaErro').textContent = r.erro; return; }
+    if (r.ok && carta) {
+      $('cartaIn').innerHTML = '<div class="carta-fim"><svg><use href="#paw"/></svg></div><h3 class="carta-cat">Resposta guardada</h3><p class="carta-perg">Você declarou ' + brl(somaCarta()) + ' no total. Assim que os dois responderem, o limite vira a média.</p>';
+      $('cartaVoltar').hidden = true; b.hidden = true;
+      setTimeout(fecharCarta, 1900);
+    } else fecharCarta();
+    receber(r, true);
+  }, function (e) { b.disabled = false; b.textContent = 'Concluir'; $('cartaErro').textContent = 'Não consegui guardar. Tenta de novo.'; }).votarLimites(estado.token, resp);
+}
+document.addEventListener('click', function (ev) {
+  var t = ev.target, id = t && t.id;
+  if (id === 'votoAbrir') return abrirCarta();
+  if (!carta) return;
+  if (id === 'cartaProx') return avancarCarta();
+  if (id === 'cartaVoltar') { if (!carta.i) return fecharCarta(); carta.valores[carta.i] = lerValor($('cartaValor').value); animarTotal(); return trocarCarta(carta.i - 1); }
+  if (t.dataset && t.dataset.passo) {
+    var c = $('cartaValor'), v = Math.max(0, lerValor(c.value) + Number(t.dataset.passo));
+    c.value = v ? String(v).replace('.', ',') : ''; carta.valores[carta.i] = v; $('cartaErro').textContent = ''; animarTotal();
+  }
+});
+document.addEventListener('input', function (ev) {
+  if (!carta || ev.target.id !== 'cartaValor') return;
+  carta.valores[carta.i] = lerValor(ev.target.value); $('cartaErro').textContent = ''; animarTotal();
+});
+document.addEventListener('keydown', function (ev) {
+  if (!carta) return;
+  if (ev.key === 'Enter' && ev.target.id === 'cartaValor') { ev.preventDefault(); avancarCarta(); }
+  if (ev.key === 'Escape') fecharCarta();
+});
+
 function desenharPendentes() {
   var vistos = {}, lista = [];
   estado.meses.forEach(function (m) { m.itens.forEach(function (x) { if (x.quem === '' && !vistos[x.linha]) { vistos[x.linha] = true; lista.push(x); } }); });
   $('pendPainel').hidden = !lista.length;
   $('pendN').textContent = lista.length;
-  $('pend').innerHTML = lista.map(function (x) {
+  $('pend').innerHTML = lista.reverse().map(function (x) {   // a mais recente primeiro
     var sub = [x.cat, x.cartao, x.n > 1 ? x.n + ' parcelas de ' + brl(x.compra) : ''].filter(Boolean).join(' · ');
     var html = '<div class="row"><span class="d">' + (esc(x.data) || '—') + '</span><span class="t">' + esc(x.desc) + '<small>' + esc(sub) + '</small></span>' +
       '<span class="v">' + brl(x.compra * (x.n > 1 ? x.n : 1)) + '</span><button type="button" class="ed" data-l="' + x.linha + '">De quem é?</button></div>';

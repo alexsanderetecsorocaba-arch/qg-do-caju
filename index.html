@@ -131,28 +131,36 @@ body.escuro.saude{--e-ambar:#5ad1e6}
 .s-pessoas{justify-content:center}
 .s-grade{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
 @media (min-width:860px){.s-grade{grid-template-columns:330px minmax(0,1fr)}.s-mapa{position:sticky;top:12px}}
-.s-mapa{display:flex;flex-direction:column;gap:10px;background:radial-gradient(120% 80% at 50% 0,#16263a 0,var(--e-card) 60%)}
-.s-corpo{width:min(100%,290px);height:auto;margin:0 auto;display:block;overflow:hidden}
-.s-corpo .z{fill:rgba(90,209,230,.07);stroke:rgba(90,209,230,.55);stroke-width:1.3;cursor:pointer;outline:0;transition:fill .35s ease,stroke .35s ease,stroke-width .25s ease,opacity .35s ease}
-.s-corpo .zl{fill:none;stroke:rgba(90,209,230,.22);stroke-linecap:round;stroke-linejoin:round}
-.s-corpo .z:hover,.s-corpo .z:focus-visible{fill:rgba(90,209,230,.22)}
-.s-corpo .zl:hover,.s-corpo .zl:focus-visible{fill:none;stroke:rgba(90,209,230,.45)}
-.s-corpo .z.agendado{fill:rgba(110,168,255,.3);stroke:#6ea8ff}.s-corpo .zl.agendado{fill:none;stroke:rgba(110,168,255,.6)}
-.s-corpo .z.atencao,.s-corpo .z.breve{fill:rgba(242,184,75,.34);stroke:#f2b84b;animation:sPulso 2.6s ease-in-out infinite}
-.s-corpo .zl.atencao,.s-corpo .zl.breve{fill:none;stroke:rgba(242,184,75,.7)}
-.s-corpo .z.atrasado{fill:rgba(255,122,133,.42);stroke:#ff7a85;animation:sPulso 1.5s ease-in-out infinite}.s-corpo .zl.atrasado{fill:none;stroke:rgba(255,122,133,.8)}
-.s-corpo .z.sel{stroke:#fff;stroke-width:2.2}.s-corpo .zl.sel{stroke:rgba(255,255,255,.75)}
-.s-corpo .tor{fill:rgba(90,209,230,.04);stroke:rgba(90,209,230,.35);stroke-width:1.2;pointer-events:none}
-.s-corpo .osso,.s-corpo .guia{fill:none;stroke:rgba(90,209,230,.28);stroke-width:1;pointer-events:none}
-.s-corpo .guia{stroke-dasharray:2 4}
-.s-corpo .junta{fill:#5ad1e6;opacity:.7;pointer-events:none}
-.s-corpo .rot{fill:var(--e-sub);font:600 10px var(--body);text-anchor:middle;pointer-events:none}
-.s-corpo .scan{pointer-events:none;animation:sScan 5.5s cubic-bezier(.45,0,.55,1) infinite}
-@keyframes sPulso{0%,100%{opacity:1}50%{opacity:.5}}
-@keyframes sScan{0%{transform:translateY(-70px)}100%{transform:translateY(460px)}}
+.s-mapa{display:flex;flex-direction:column;gap:12px;background:radial-gradient(90% 60% at 30% 45%,#16214a 0,#0c1230 55%,#0a0f24 100%);border-color:rgba(120,150,255,.22)}
+.s-corpo{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:6px 10px;align-items:center;max-width:420px;margin:0 auto;width:100%}
+.s-corpo svg{width:100%;height:auto;display:block;overflow:visible}
+.s-corpo .fig{filter:drop-shadow(0 0 10px rgba(80,130,255,.45))}
+.s-corpo .z{fill:url(#sBase);stroke:rgba(150,190,255,.55);stroke-width:1;stroke-linejoin:round;cursor:pointer;outline:0;transition:fill .45s ease,stroke .45s ease,opacity .45s ease,filter .45s ease}
+.s-corpo .z:hover,.s-corpo .z:focus-visible{filter:brightness(1.35)}
+.s-corpo .z.agendado{fill:url(#sAzul);stroke:#9fd4ff}
+.s-corpo .z.atencao,.s-corpo .z.breve{fill:url(#sAmbar);stroke:#ffd27a;animation:sPulso 3s ease-in-out infinite}
+.s-corpo .z.atrasado{fill:url(#sRosa);stroke:#ff9aa5;animation:sPulso 1.8s ease-in-out infinite}
+.s-corpo .z.sel{stroke:#fff;stroke-width:2}
+.s-corpo .cor{fill:#7fd6ff;stroke:none}.s-corpo .cor.agendado{fill:#bfe6ff}.s-corpo .cor.atencao,.s-corpo .cor.breve{fill:#ffc857}.s-corpo .cor.atrasado{fill:#ff7a85}.s-corpo .cor.sel{stroke:#fff;stroke-width:1.5}
+.s-corpo .halo{fill:#7fd6ff;opacity:.35;pointer-events:none;transform-origin:center;transform-box:fill-box;animation:sHalo 3.2s ease-in-out infinite}
+.s-corpo .base{fill:none;stroke:#4f8dff;pointer-events:none}
+.s-corpo .luz{pointer-events:none}
+.s-regs{display:flex;flex-direction:column;gap:5px;min-width:0}
+.s-reg{display:flex;align-items:center;gap:8px;width:100%;padding:7px 10px;border-radius:12px;border:1px solid rgba(140,170,255,.14);background:rgba(120,150,255,.07);color:var(--e-txt,#e8eef7);font:600 12.5px var(--body);text-align:left;cursor:pointer;transition:background .3s ease,border-color .3s ease,transform .2s ease}
+.s-reg:hover{background:rgba(120,150,255,.16)}.s-reg:active{transform:scale(.98)}
+.s-reg i{flex:none;width:9px;height:9px;border-radius:50%;background:#4f8dff;box-shadow:0 0 8px currentColor;color:#4f8dff}
+.s-reg span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.s-reg small{font:500 10.5px var(--body);color:#5fe0b0}
+.s-reg.agendado i{background:#9fd4ff;color:#9fd4ff}.s-reg.agendado small{color:#9fd4ff}
+.s-reg.atencao,.s-reg.breve{border-color:rgba(255,200,87,.45);background:rgba(255,200,87,.1)}.s-reg.atencao i,.s-reg.breve i{background:#ffc857;color:#ffc857}.s-reg.atencao small,.s-reg.breve small{color:#ffc857}
+.s-reg.atrasado{border-color:rgba(255,122,133,.5);background:rgba(255,122,133,.12)}.s-reg.atrasado i{background:#ff7a85;color:#ff7a85}.s-reg.atrasado small{color:#ff9aa5}
+.s-reg.sel{border-color:#fff;background:rgba(255,255,255,.14)}
+@keyframes sHalo{0%,100%{transform:scale(1);opacity:.35}50%{transform:scale(1.9);opacity:0}}
+@media (prefers-reduced-motion:reduce){.s-corpo .z,.s-corpo .halo{animation:none}}
+@keyframes sPulso{0%,100%{opacity:1}50%{opacity:.62}}
 .s-leg{display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;font-size:12px;color:var(--e-sub)}
-.s-leg span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;background:rgba(90,209,230,.35)}
-.s-leg .atrasado::before{background:#ff7a85}.s-leg .atencao::before{background:#f2b84b}.s-leg .agendado::before{background:#6ea8ff}
+.s-leg span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;background:#4f8dff}
+.s-leg .atrasado::before{background:#ff7a85}.s-leg .atencao::before{background:#ffc857}.s-leg .agendado::before{background:#9fd4ff}
 .s-cab{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.s-cab h2{margin:0}
 .s-sub{font:700 12px var(--body);text-transform:uppercase;letter-spacing:.09em;color:var(--e-sub);margin:18px 0 0}
 .s-erro{color:var(--e-ruim);font-size:13.5px;margin:0 0 10px}
@@ -174,7 +182,7 @@ body.escuro.saude{--e-ambar:#5ad1e6}
 .s-tit{font-weight:700;font-size:15px;overflow-wrap:anywhere}.s-tit small{display:block;font-weight:400;font-size:12.5px;color:var(--e-sub);margin-top:2px}
 .s-custo{font:600 13px var(--mono);white-space:nowrap}
 .s-linha{list-style:none;padding:0;margin-top:2px;margin-bottom:0;border-left:1px solid var(--e-linha)}
-.s-linha li{position:relative;padding:0 0 12px 16px;font-size:13.5px}
+.s-linha li,.s-linha li.pend,.s-linha li.feito{position:relative;padding:0 0 12px 16px;font-size:13.5px;background:none;border:0;border-radius:0;color:var(--e-txt)}
 .s-linha li::before{content:"";position:absolute;left:-5px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--e-card2);border:1.5px solid var(--e-sub)}
 .s-linha li.feito::before{background:var(--e-ok);border-color:var(--e-ok)}.s-linha li.pend::before{border-color:#5ad1e6;box-shadow:0 0 0 3px rgba(90,209,230,.18)}.s-linha li.fim::before{background:#5ad1e6;border-color:#5ad1e6}
 .s-linha b{display:block}.s-linha span{color:var(--e-sub);font:12.5px var(--mono)}.s-linha p{margin:4px 0 0;color:var(--e-txt);opacity:.85;overflow-wrap:anywhere}
@@ -1037,31 +1045,47 @@ function proximoTexto(c) {
   if (!p.quando) return 'Falta marcar: ' + nomeEtapa(p).toLowerCase();
   return nomeEtapa(p) + (p.quando < sau.dados.hoje ? ' atrasado desde ' : ' em ') + dBR(p.quando);
 }
+var PARTES_CURTO = { geral: 'Geral', mente: 'Mente', cabeca: 'Cabeça', olhos: 'Olhos', boca: 'Boca', coracao: 'Coração', pulmoes: 'Pulmões', abdomen: 'Abdômen', pelvis: 'Pelve', costas: 'Coluna', bracos: 'Braços', pernas: 'Pernas', pele: 'Pele' };
+var EST_CURTO = { atrasado: 'Atrasado', atencao: 'Atenção', breve: 'Em breve', agendado: 'Marcado' };
+/* Curva fechada e suave passando pelos pontos (Catmull-Rom). */
+function curva(pts) {
+  var n = pts.length, d = 'M' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1);
+  for (var i = 0; i < n; i++) {
+    var p0 = pts[(i + n - 1) % n], p1 = pts[i], p2 = pts[(i + 1) % n], p3 = pts[(i + 2) % n];
+    d += 'C' + (p1[0] + (p2[0] - p0[0]) / 6).toFixed(1) + ' ' + (p1[1] + (p2[1] - p0[1]) / 6).toFixed(1) + ' ' + (p2[0] - (p3[0] - p1[0]) / 6).toFixed(1) + ' ' + (p2[1] - (p3[1] - p1[1]) / 6).toFixed(1) + ' ' + p2[0].toFixed(1) + ' ' + p2[1].toFixed(1);
+  }
+  return d + 'Z';
+}
 function corpo(mulher, est, sel) {
-  var sw = mulher ? 41 : 50, ww = mulher ? 26 : 32, hw = mulher ? 41 : 35, c = 110;
-  var z = function (parte, forma, linha) { return forma.replace(/^<(\w+)/, '<$1 class="z' + (linha ? ' zl' : '') + (est[parte] ? ' ' + est[parte] : '') + (sel === parte ? ' sel' : '') + '" data-parte="' + parte + '" tabindex="0" role="button" aria-label="' + PARTES[parte] + (est[parte] ? ', ' + EST[est[parte]].toLowerCase() : '') + '"'); };
-  var no = function (parte, x, y, rot) { return '<g>' + z(parte, '<circle cx="' + x + '" cy="' + y + '" r="15"/>') + '<text x="' + x + '" y="' + (y + 30) + '" class="rot">' + rot + '</text></g>'; };
-  var braco = function (s) { return 'M' + (c + s * (sw + 8)) + ' 100L' + (c + s * (sw + 19)) + ' 176L' + (c + s * (sw + 23)) + ' 248'; };
-  var perna = function (s) { return 'M' + (c + s * (hw / 2 + 1)) + ' 274L' + (c + s * (hw / 2 + 4)) + ' 352L' + (c + s * (hw / 2 + 3)) + ' 432'; };
-  var costela = function (y, w) { return '<path d="M' + (c - w) + ' ' + y + 'Q' + c + ' ' + (y + 9) + ' ' + (c + w) + ' ' + y + '"/>'; };
-  return '<svg viewBox="0 0 220 460" class="s-corpo" role="group" aria-label="Mapa do corpo">' +
-    '<defs><linearGradient id="sScan" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#5ad1e6" stop-opacity="0"/><stop offset=".5" stop-color="#5ad1e6" stop-opacity=".28"/><stop offset="1" stop-color="#5ad1e6" stop-opacity="0"/></linearGradient></defs>' +
-    '<g class="guia"><path d="M37 120H' + (c - sw - 2) + 'M37 200H' + (c - sw - 22) + 'M183 44H138"/></g>' +
-    z('pernas', '<path d="' + perna(-1) + perna(1) + '" style="stroke-width:19px"/>', true) +
-    z('bracos', '<path d="' + braco(-1) + braco(1) + '" style="stroke-width:14px"/>', true) +
-    z('pelvis', '<path d="M' + (c - ww) + ' 228H' + (c + ww) + 'L' + (c + hw) + ' 264H' + (c - hw) + 'Z"/>') +
-    z('abdomen', '<path d="M' + (c - ww - 4) + ' 176H' + (c + ww + 4) + 'L' + (c + ww) + ' 224H' + (c - ww) + 'Z"/>') +
-    '<path class="tor" d="M' + (c - sw) + ' 90H' + (c + sw) + 'L' + (c + ww + 4) + ' 172H' + (c - ww - 4) + 'Z"/>' +
-    '<g class="osso">' + costela(104, sw - 12) + costela(120, sw - 16) + costela(136, sw - 20) + costela(152, sw - 24) + '<path d="M110 71V86"/></g>' +
-    z('pulmoes', '<path d="M' + (c - 8) + ' 100C' + (c - 30) + ' 100 ' + (c - sw + 10) + ' 130 ' + (c - sw + 14) + ' 160H' + (c - 8) + 'ZM' + (c + 8) + ' 100C' + (c + 30) + ' 100 ' + (c + sw - 10) + ' 130 ' + (c + sw - 14) + ' 160H' + (c + 8) + 'Z"/>') +
-    z('costas', '<path d="M110 90V262" style="stroke-width:7px" stroke-dasharray="3 5"/>', true) +
-    z('coracao', '<circle cx="124" cy="128" r="9.5"/>') +
-    z('cabeca', '<circle cx="110" cy="44" r="27"/>') +
-    z('olhos', '<path d="M95 40a5 3.4 0 1 0 10 0a5 3.4 0 1 0-10 0M115 40a5 3.4 0 1 0 10 0a5 3.4 0 1 0-10 0"/>') +
-    z('boca', '<rect x="100" y="54" width="20" height="7" rx="3.5"/>') +
-    '<g class="junta">' + [[c - sw - 8, 100], [c + sw + 8, 100], [c - sw - 19, 176], [c + sw + 19, 176], [c - hw / 2 - 4, 352], [c + hw / 2 + 4, 352]].map(function (p) { return '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="2.6"/>'; }).join('') + '</g>' +
-    no('geral', 22, 120, 'Geral') + no('pele', 22, 200, 'Pele') + no('mente', 198, 44, 'Mente') +
-    '<rect class="scan" x="0" y="0" width="220" height="70" fill="url(#sScan)"/></svg>';
+  var c = 100, sw = mulher ? 31 : 40, ax = mulher ? 28 : 36, w1 = mulher ? 25 : 32, ww = mulher ? 22 : 30, w2 = mulher ? 31 : 32, hw = mulher ? 36 : 34;
+  var cls = function (parte, extra) { return 'class="' + (extra || 'z') + (est[parte] ? ' ' + est[parte] : '') + (sel === parte ? ' sel' : '') + '" data-parte="' + parte + '" tabindex="0" role="button" aria-label="' + PARTES[parte] + (est[parte] ? ', ' + EST[est[parte]].toLowerCase() : '') + '"'; };
+  var esp = function (pts) { return pts.map(function (p) { return [2 * c - p[0], p[1]]; }); };
+  var braco = [[c - sw + 3, 79], [c - sw - 9, 86], [c - sw - 13, 108], [c - sw - 14, 140], [c - sw - 18, 168], [c - sw - 22, 204], [c - sw - 25, 232], [c - sw - 27, 252], [c - sw - 22, 262], [c - sw - 16, 252], [c - sw - 15, 232], [c - sw - 9, 204], [c - sw - 5, 170], [c - ax - 3, 140], [c - ax - 1, 112], [c - sw + 1, 94]];
+  var perna = [[c - hw, 262], [c - hw - 1, 300], [c - hw + 3, 340], [c - hw + 2, 372], [c - hw + 7, 412], [c - hw + 6, 428], [c - hw + 2, 436], [c - hw + 14, 439], [c - hw + 20, 432], [c - hw + 19, 412], [c - 10, 372], [c - 11, 344], [c - 5, 300], [c - 3, 276], [c - hw / 2, 264]];
+  var peito = 'M' + (c - 9) + ' 70Q' + (c - sw + 8) + ' 72 ' + (c - sw) + ' 82L' + (c - ax) + ' 112L' + (c - w1) + ' 148Q' + c + ' 157 ' + (c + w1) + ' 148L' + (c + ax) + ' 112L' + (c + sw) + ' 82Q' + (c + sw - 8) + ' 72 ' + (c + 9) + ' 70Z';
+  var abd = 'M' + (c - w1) + ' 152Q' + c + ' 161 ' + (c + w1) + ' 152L' + (c + ww) + ' 184L' + (c + w2) + ' 212Q' + c + ' 221 ' + (c - w2) + ' 212L' + (c - ww) + ' 184Z';
+  var pel = 'M' + (c - w2) + ' 216Q' + c + ' 225 ' + (c + w2) + ' 216L' + (c + hw) + ' 244L' + (c + hw) + ' 258Q' + (c + hw / 2) + ' 260 ' + (c + 2) + ' 274L' + (c - 2) + ' 274Q' + (c - hw / 2) + ' 260 ' + (c - hw) + ' 258L' + (c - hw) + ' 244Z';
+  var grad = function (id, a, b) { return '<linearGradient id="' + id + '" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="' + a + '"/><stop offset="1" stop-color="' + b + '"/></linearGradient>'; };
+  var svg = '<svg viewBox="0 -6 200 476" role="group" aria-label="Mapa do corpo">' +
+    '<defs>' + grad('sBase', 'rgba(96,165,255,.62)', 'rgba(104,92,255,.5)') + grad('sAzul', 'rgba(150,225,255,.95)', 'rgba(70,170,255,.85)') + grad('sAmbar', 'rgba(255,214,120,.95)', 'rgba(255,160,60,.85)') + grad('sRosa', 'rgba(255,150,165,.95)', 'rgba(255,90,110,.85)') +
+    '<radialGradient id="sLuz"><stop offset="0" stop-color="#4f8dff" stop-opacity=".38"/><stop offset="1" stop-color="#4f8dff" stop-opacity="0"/></radialGradient></defs>' +
+    '<ellipse class="luz" cx="100" cy="230" rx="100" ry="200" fill="url(#sLuz)"/>' +
+    '<ellipse class="base" cx="100" cy="440" rx="74" ry="11" stroke-width="1.4" opacity=".8"/><ellipse class="base" cx="100" cy="440" rx="52" ry="7" stroke-width="1" opacity=".45"/>' +
+    '<g class="fig">' +
+    '<path ' + cls('pernas') + ' d="' + curva(perna) + curva(esp(perna)) + '"/>' +
+    '<path ' + cls('bracos') + ' d="' + curva(braco) + curva(esp(braco)) + '"/>' +
+    '<path ' + cls('pelvis') + ' d="' + pel + '"/>' +
+    '<path ' + cls('abdomen') + ' d="' + abd + '"/>' +
+    '<path ' + cls('pulmoes') + ' d="' + peito + '"/>' +
+    '<g ' + cls('cabeca') + '>' + (mulher ? '<circle cx="100" cy="6" r="8.5"/>' : '') + '<path d="M' + (c - 8) + ' 52L' + (c - 9) + ' 67Q' + c + ' 71 ' + (c + 9) + ' 67L' + (c + 8) + ' 52Z"/><ellipse cx="100" cy="36" rx="' + (mulher ? 16.5 : 18) + '" ry="22"/></g>' +
+    '</g>' +
+    '<circle class="halo" cx="' + (c + 11) + '" cy="108" r="6"/><circle ' + cls('coracao', 'cor') + ' cx="' + (c + 11) + '" cy="108" r="5" style="cursor:pointer"/>' +
+    '</svg>';
+  var ordem = ['geral', 'mente', 'cabeca', 'olhos', 'boca', 'coracao', 'pulmoes', 'abdomen', 'pelvis', 'costas', 'bracos', 'pernas', 'pele'];
+  var regs = ordem.map(function (p) {
+    return '<button type="button" class="s-reg' + (est[p] ? ' ' + est[p] : '') + (sel === p ? ' sel' : '') + '" data-parte="' + p + '" aria-label="' + PARTES[p] + ', ' + (est[p] ? EST[est[p]].toLowerCase() : 'em dia') + '"><i></i><span>' + PARTES_CURTO[p] + '</span>' + (est[p] ? '<small>' + EST_CURTO[est[p]] + '</small>' : '') + '</button>';
+  }).join('');
+  return '<div class="s-corpo">' + svg + '<div class="s-regs">' + regs + '</div></div>';
 }
 function buscarSaude() {
   var pedido = ++sau.pedido;
@@ -1135,7 +1159,7 @@ function desenharSaude() {
     kpi('Marcados', n.agendado + n.breve, n.breve ? n.breve + ' nos próximos 14 dias' : 'sem data próxima') + kpi('Gasto em ' + ano, brl(gasto), n.ok + (n.ok === 1 ? ' finalizado' : ' finalizados'));
   $('sauMapa').innerHTML = corpo(sau.pessoa === 'valesca', est, sau.parte) +
     '<div class="s-leg"><span class="atrasado">Atrasado</span><span class="atencao">Pede atenção</span><span class="agendado">Marcado</span><span>Em dia</span></div>' +
-    '<p class="e-vazio" style="text-align:center">Toque numa parte do corpo para ver ou criar um acompanhamento.</p>';
+    '<p class="e-vazio" style="text-align:center">Toque no corpo ou numa região para ver ou criar um acompanhamento.</p>';
   var lista = casos.filter(function (c) { return !sau.parte || c.parte === sau.parte; }).sort(function (a, b) { return ordem[estadoCaso(a)] - ordem[estadoCaso(b)]; });
   var abertos = lista.filter(function (c) { return !c.fim; }), fins = lista.filter(function (c) { return c.fim; });
   $('sauLista').innerHTML = '<div class="s-cab"><h2>' + (sau.parte ? esc(PARTES[sau.parte]) : 'Todos os acompanhamentos') + '</h2>' +

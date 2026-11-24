@@ -1416,21 +1416,38 @@ function ligarPush() {
 }
 function desenharPush(msg) {
   var cx = $('pushCaixa');
-  if (!pushPossivel()) { cx.hidden = true; return; }
-  var ligado = false; try { ligado = Notification.permission === 'granted' && localStorage.getItem('qg_push') === estado.usuario.papel; } catch (e) {}
+  if (!window.QG_API || !('serviceWorker' in navigator)) { cx.hidden = true; return; }   // dentro da planilha não existe
   cx.hidden = false;
-  cx.innerHTML = Notification.permission === 'denied' ? '<span>As notificações estão bloqueadas neste celular. Para ligar, libere nas configurações do app.</span>'
-    : ligado ? '<span>Notificações ligadas neste celular.</span>'
+  var iphone = /iPhone|iPad|iPod/.test(navigator.userAgent), instalado = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+  if (!('PushManager' in window) || !('Notification' in window)) {
+    cx.innerHTML = '<span>' + (iphone && !instalado ? 'No iPhone, as notificações só funcionam com o app na Tela de Início: no Safari, toque em Compartilhar e depois em "Adicionar à Tela de Início". Abra o QG pelo ícone e volte aqui.'
+      : iphone ? 'Este iPhone não aceita notificações de app da web. Atualize o iOS (precisa ser 16.4 ou mais novo).' : 'Este navegador não aceita notificações. Abra o QG pelo Chrome.') + '</span>';
+    return;
+  }
+  if (!estado.vapid) { cx.innerHTML = '<span>As notificações ainda não foram ligadas no servidor (falta a chave do Firebase no Apps Script).</span>'; return; }
+  var ligado = false; try { ligado = Notification.permission === 'granted' && localStorage.getItem('qg_push') === estado.usuario.papel; } catch (e) {}
+  cx.innerHTML = Notification.permission === 'denied' ? '<span>As notificações estão bloqueadas neste celular. Para ligar, libere nas configurações do celular (Notificações > QG do Caju) e abra o app de novo.</span>'
+    : ligado ? '<span>' + esc(msg || 'Notificações ligadas neste celular.') + '</span><div class="linha"><button type="button" class="btn mini" id="pushTeste">Mandar um teste</button><button type="button" class="btn mini" id="pushLigar">Ativar de novo</button></div>'
     : '<span>' + esc(msg || 'Quer ser avisado no celular quando chegar compra nova ou um limite apertar?') + '</span><div class="linha"><button type="button" class="btn mini" id="pushLigar">Ativar notificações neste celular</button></div>';
   if (ligado && !estado.pushRenovado) { estado.pushRenovado = true; ligarPush().catch(function () {}); }   // mantém o endereço do aparelho em dia
 }
 document.addEventListener('click', function (ev) {
-  if (!ev.target || ev.target.id !== 'pushLigar') return;
-  var b = ev.target; b.disabled = true; b.textContent = 'Ligando…';
+  var b = ev.target;
+  if (!b || (b.id !== 'pushLigar' && b.id !== 'pushTeste')) return;
+  b.disabled = true;
+  if (b.id === 'pushTeste') {
+    b.textContent = 'Mandando…';
+    chamar('testarMeuPush', [estado.token]).then(function (r) {
+      if (!r.ok) throw new Error(r.erro);
+      desenharPush(r.enviados ? 'Teste enviado. Se não aparecer em 1 minuto, toque em "Ativar de novo".' : r.removidos ? 'O endereço deste celular expirou. Toque em "Ativar de novo".' : 'Não foi: ' + (r.motivo || 'nenhum celular cadastrado') + '.');
+    }).catch(function (e) { desenharPush('Não deu para testar (' + (e && e.message ? e.message : e) + ').'); });
+    return;
+  }
+  b.textContent = 'Ligando…';
   Notification.requestPermission().then(function (p) {
     if (p !== 'granted') throw new Error('sem permissão');
     return ligarPush();
-  }).then(function () { desenharPush(); }, function (e) { desenharPush(Notification.permission === 'denied' ? '' : 'Não deu para ligar (' + (e && e.message ? e.message : e) + '). Tenta de novo.'); });
+  }).then(function () { desenharPush('Pronto, notificações ligadas. Toque em "Mandar um teste" para conferir.'); }, function (e) { desenharPush(Notification.permission === 'denied' ? '' : 'Não deu para ligar (' + (e && e.message ? e.message : e) + '). Tenta de novo.'); });
 });
 $('btnSino').addEventListener('click', function () {
   var abrir = !$('sinoPainel').classList.contains('aberto');

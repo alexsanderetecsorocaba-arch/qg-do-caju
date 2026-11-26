@@ -1596,8 +1596,7 @@ function desenharNu() {   // só a Valesca vê: passo a passo para separar o apo
   el.innerHTML = '<div class="topo"><img src="' + SON_NU_LOGO + '" alt="Nubank"><div><h2>Sua caixinha do Nubank</h2><p>Guarde o aporte lá e lance aqui para o Alex ver.</p></div></div>' +
     '<p class="cap">Assim a sua caixinha deve aparecer no Nubank:</p>' +
     '<div class="cx" role="img" aria-label="Caixinha Casa nossa com ' + brl(sonTotais().valesca) + '"><span class="rot"><img src="' + SON_NU_LOGO + '" alt="">Caixinha</span><span class="nome">Casa nossa</span><span class="qtd">' + brl(sonTotais().valesca) + '</span><small>Tudo o que você já guardou para a casa</small></div>' +
-    '<p class="nota" style="margin:8px 0 0">Se o saldo da sua caixinha no Nubank estiver igual a este valor (ou um pouquinho maior, por causa do rendimento), está tudo certo. Se estiver menor, falta guardar ou lançar algum aporte.</p>' +
-    '<p class="nota">O dinheiro continua seu e você pode tirar da caixinha quando precisar.</p>';
+    '<p class="nota" style="margin:8px 0 0">Se o saldo da sua caixinha no Nubank estiver igual a este valor (ou um pouquinho maior, por causa do rendimento), está tudo certo. Se estiver menor, falta guardar ou lançar algum aporte.</p>'
 }
 function efeitoAporte() {
   var f = $('sonForm'); if (!f || !son.dados) return;

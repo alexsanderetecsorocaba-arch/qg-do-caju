@@ -283,6 +283,24 @@ button.ag-i{cursor:pointer}button.ag-i:focus-visible{outline:3px solid var(--mel
 .vazio{color:var(--muted);margin:0}
 
 /* Sonhos */
+.son-nu{background:#f6efff;border-color:#820ad1;box-shadow:5px 5px 0 #820ad1}
+.son-nu .topo{display:flex;gap:12px;align-items:center;margin-bottom:6px}
+.son-nu .topo img{width:48px;height:48px;border-radius:12px;flex:none;display:block;border:2.5px solid var(--marinho)}
+.son-nu h2{margin:0}
+.son-nu .topo p{margin:2px 0 0;font-size:13px;color:var(--muted)}
+.son-nu .cx{background:#820ad1;color:#fff;border-radius:16px;border:2.5px solid var(--marinho);padding:14px 16px;margin:14px 0 4px;display:flex;flex-direction:column;gap:2px;position:relative;overflow:hidden}
+.son-nu .cx .rot{display:flex;align-items:center;gap:8px;font:700 12px var(--body);letter-spacing:.06em;text-transform:uppercase;opacity:.9}
+.son-nu .cx .rot img{width:20px;height:20px;border-radius:6px;display:block}
+.son-nu .cx .nome{font:800 20px var(--display);margin-top:6px}
+.son-nu .cx .qtd{font:700 26px var(--mono);letter-spacing:-.5px}
+.son-nu .cx small{font-size:12.5px;opacity:.88}
+.son-nu .cap{margin:6px 0 0;font:700 12.5px var(--body);color:#6a08ad}
+.son-nu ol{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;counter-reset:nu}
+.son-nu li{counter-increment:nu;display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:start;font-size:14.5px}
+.son-nu li::before{content:counter(nu);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#820ad1;color:#fff;font:800 14px var(--display)}
+.son-nu li b{color:#6a08ad}
+.son-nu .val{display:inline-block;background:#fff;border:2px solid #820ad1;border-radius:8px;padding:0 8px;font:700 14px var(--mono);color:#6a08ad}
+.son-nu .nota{margin:12px 0 0;font-size:12.5px;color:var(--muted)}
 .menu-i[data-ir=sonhos] .ic{background:#f6d7a8}
 .son-escolha{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .son-card{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--papel);border:3px solid var(--marinho);border-radius:18px;box-shadow:4px 4px 0 var(--marinho)}
@@ -660,6 +678,7 @@ body.escuro .abas button[aria-pressed="true"]{background:var(--e-card2);color:va
       <div class="vis" id="sonProgresso">
         <section class="panel son-hero" id="sonHero"></section>
         <section class="panel son-ganho" id="sonGanho"></section>
+        <section class="panel lista son-nu" id="sonNu" hidden></section>
         <section class="panel lista" id="sonAporteCard"><h2 id="sonAporteTit">Fazer meu aporte</h2><div id="sonAporte"></div></section>
         <section class="panel lista son-quem"><h2 style="margin:0">Quem está guardando</h2><div id="sonQuem"></div></section>
         <section class="panel lista son-graf"><h2>Até a entrada</h2><p class="explica" id="sonGrafTxt"></p><div id="sonGraf"></div></section>
@@ -1544,10 +1563,9 @@ function desenharProgresso() {
     '<div class="son-prev" style="margin-top:14px"><div><small>Falta</small><b>' + brl(falta) + '</b></div><div><small>Meses</small><b>' + (isFinite(mAlex) ? Math.ceil(mAlex) : '—') + '</b></div><div><small>Previsão</small><b>' + mesQueVem(D.hoje, mAlex) + '</b></div></div>';
 
   var g = ganhoDe(t.valesca, son.meta);
-  var dias100 = Math.max(1, Math.round(-ganhoDe(-100, son.meta) * 30.4));
   $('sonGanho').innerHTML = t.valesca > 0
-    ? '<div class="n">' + tempoTxt(g) + '</div><p>' + (eu === 'valesca' ? 'é quanto <b>você</b> já adiantou a casa' : 'é quanto a <b>Valesca</b> já adiantou a casa') + ' com ' + brl(t.valesca) + ' guardados. Cada R$ 100 a mais adianta uns ' + dias100 + ' dias.</p>'
-    : '<div class="n">' + dias100 + ' dias</div><p>' + (eu === 'valesca' ? 'é o quanto cada R$ 100 seu adianta a casa. Sem compromisso: quando der, deu.' : 'é o quanto cada R$ 100 da Valesca adianta a casa, quando ela puder.') + '</p>';
+    ? '<div class="n">' + tempoTxt(g) + '</div><p>' + (eu === 'valesca' ? 'é quanto <b>você</b> já adiantou a casa' : 'é quanto a <b>Valesca</b> já adiantou a casa') + ' com ' + brl(t.valesca) + ' guardados.</p>'
+    : '<p>' + (eu === 'valesca' ? 'Quando você fizer o seu primeiro aporte, aqui aparece quanto você já adiantou a casa. Sem compromisso: quando der, deu.' : 'Quando a Valesca fizer o primeiro aporte, aqui aparece quanto ela já adiantou a casa.') + '</p>';
 
   $('sonAporteTit').textContent = eu === 'valesca' ? 'Fazer meu aporte' : 'Lançar um aporte meu';
   if (!$('sonAporte').querySelector('form')) {
@@ -1557,6 +1575,7 @@ function desenharProgresso() {
       '<p class="son-efeito" id="sonEfeito"></p><p class="ederro" id="sonErro"></p><div class="edbtns"><button type="submit" class="btn">Guardar na casa</button></div></form>';
   }
   $('sonErro').textContent = son.erro || '';
+  desenharNu();
   efeitoAporte();
 
   var tot = t.alex + t.valesca || 1;
@@ -1571,9 +1590,19 @@ function desenharProgresso() {
   desenharGrafico();
   desenharComb();
 }
+var SON_NU_LOGO = 'data:image/png;base64,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';
+function desenharNu() {   // só a Valesca vê: passo a passo para separar o aporte na caixinha do Nubank dela
+  var el = $('sonNu'), eu = son.dados.eu; el.hidden = eu !== 'valesca'; if (eu !== 'valesca') { el.innerHTML = ''; return; }
+  el.innerHTML = '<div class="topo"><img src="' + SON_NU_LOGO + '" alt="Nubank"><div><h2>Sua caixinha do Nubank</h2><p>Guarde o aporte lá e lance aqui para o Alex ver.</p></div></div>' +
+    '<p class="cap">Assim a sua caixinha deve aparecer no Nubank:</p>' +
+    '<div class="cx" role="img" aria-label="Caixinha Casa nossa com ' + brl(sonTotais().valesca) + '"><span class="rot"><img src="' + SON_NU_LOGO + '" alt="">Caixinha</span><span class="nome">Casa nossa</span><span class="qtd">' + brl(sonTotais().valesca) + '</span><small>Tudo o que você já guardou para a casa</small></div>' +
+    '<p class="nota" style="margin:8px 0 0">Se o saldo da sua caixinha no Nubank estiver igual a este valor (ou um pouquinho maior, por causa do rendimento), está tudo certo. Se estiver menor, falta guardar ou lançar algum aporte.</p>' +
+    '<p class="nota">O dinheiro continua seu e você pode tirar da caixinha quando precisar.</p>';
+}
 function efeitoAporte() {
   var f = $('sonForm'); if (!f || !son.dados) return;
   var v = lerValor(f.elements.valor.value);
+  
   $('sonEfeito').textContent = v ? 'Esse aporte adianta a ' + minus(son.dados.plano[son.meta].nome) + ' em ' + tempoTxt(-ganhoDe(-v, son.meta)) + '.' : '';
 }
 function desenharSim() {

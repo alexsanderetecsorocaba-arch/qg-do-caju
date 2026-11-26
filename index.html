@@ -199,7 +199,7 @@ body.escuro.saude{--e-ambar:#5ad1e6}
 .capa-txt b{font:800 26px/1.1 var(--display)}.capa-txt span{font-size:14px;opacity:.92}
 .menu{display:flex;flex-direction:column;gap:12px}
 .menu-i{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px 16px;background:var(--papel);border:3px solid var(--marinho);border-radius:18px;box-shadow:4px 4px 0 var(--marinho);transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s ease;animation:menuEntra .5s cubic-bezier(.2,.8,.2,1) both}
-.menu-i:nth-child(2){animation-delay:.06s}.menu-i:nth-child(3){animation-delay:.12s}.menu-i:nth-child(4){animation-delay:.18s}
+.menu-i:nth-child(2){animation-delay:.06s}.menu-i:nth-child(3){animation-delay:.12s}.menu-i:nth-child(4){animation-delay:.18s}.menu-i:nth-child(5){animation-delay:.24s}
 @keyframes menuEntra{from{opacity:0;transform:translateY(14px)}}
 .menu-i:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--marinho)}
 .menu-i:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--marinho)}
@@ -281,6 +281,85 @@ button.ag-i{cursor:pointer}button.ag-i:focus-visible{outline:3px solid var(--mel
 .chip.propria{background:var(--papel)}
 .chip.antiga{background:#eadfcb}
 .vazio{color:var(--muted);margin:0}
+
+/* Sonhos */
+.menu-i[data-ir=sonhos] .ic{background:#f6d7a8}
+.son-escolha{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.son-card{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--papel);border:3px solid var(--marinho);border-radius:18px;box-shadow:4px 4px 0 var(--marinho)}
+.son-card:focus-visible{outline:3px solid var(--mel);outline-offset:3px}
+.son-card[aria-pressed="true"]{background:var(--mel)}
+.son-card svg.ic2{width:44px;height:44px;flex:none}
+.son-card b{display:block;font:800 18px var(--display)}.son-card small{display:block;font-size:12.5px;color:var(--muted)}
+.son-card[aria-pressed="true"] small{color:var(--marinho)}
+.son-card.trancado{filter:grayscale(1);background:repeating-linear-gradient(-45deg,#f1f1f1 0 12px,#e4e4e4 12px 24px);color:#555}
+.son-card.trancado .pad{position:absolute;right:10px;top:-14px;width:28px;height:33px}
+.son-card.shake .pad{animation:shake .6s}
+.son-card .bubble{bottom:calc(100% + 12px)}
+.son-card.talk .bubble{opacity:1;transform:none;filter:none}
+.son-hero{padding:20px;display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:14px;align-items:center;overflow:hidden}
+.son-hero .big{font-size:clamp(36px,10vw,54px)}
+.son-hero .sub{margin:6px 0 0;font-size:14px;font-weight:700}
+.son-hero .sub span{color:var(--muted);font-weight:400}
+.son-casa{width:150px;height:auto;display:block}
+.son-casa .agua{transition:y .9s cubic-bezier(.2,.8,.2,1),height .9s cubic-bezier(.2,.8,.2,1)}
+.son-metas{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap}
+.son-metas button{text-transform:none}
+.son-prev{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.son-prev div{border:2.5px solid var(--marinho);border-radius:14px;padding:8px 10px;background:#fff}
+.son-prev small{display:block;font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.son-prev b{font:800 19px/1.2 var(--display)}
+.son-marcos{grid-column:1/-1;display:flex;gap:6px;align-items:center}
+.son-marcos .trilho{flex:1;height:16px;border:2.5px solid var(--marinho);border-radius:10px;background:var(--creme);position:relative;overflow:visible}
+.son-marcos .enche{position:absolute;left:0;top:0;bottom:0;background:var(--caju);border-radius:7px 0 0 7px;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.son-marcos .m{position:absolute;top:50%;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:var(--papel);border:2.5px solid var(--marinho);display:grid;place-items:center}
+.son-marcos .m svg{width:12px;height:12px;fill:var(--tracejado)}
+.son-marcos .m.ok{background:var(--mel)}.son-marcos .m.ok svg{fill:var(--marinho)}
+.son-marcos .m span{position:absolute;top:22px;font:700 10.5px var(--mono);color:var(--muted)}
+.son-quem{display:flex;flex-direction:column;gap:12px}
+.son-split{display:flex;height:26px;border:2.5px solid var(--marinho);border-radius:12px;overflow:hidden;background:var(--creme)}
+.son-split b{display:block;height:100%;transition:width .8s ease}
+.son-split b+b{border-left:2.5px solid var(--marinho)}
+.son-pess{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.son-pess div{display:flex;flex-direction:column;gap:1px;padding-left:10px;border-left:6px solid var(--c)}
+.son-pess b{font:800 16px var(--display)}.son-pess span{font:600 15px var(--mono)}.son-pess small{font-size:12.5px;color:var(--muted)}
+.son-ganho{padding:18px;background:#fff1dc;display:flex;gap:14px;align-items:center}
+.son-ganho .n{font:800 clamp(30px,8vw,44px)/1 var(--display);color:var(--caju-esc);white-space:nowrap}
+.son-ganho p{margin:0;font-size:14px}
+.son-form{display:flex;flex-direction:column;gap:10px}
+.son-form .dupla{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.son-form label{font-size:12.5px;color:var(--muted)}
+.son-form input{font-size:16px;padding:8px 10px;border-radius:10px}
+.son-rapido{display:flex;gap:8px;flex-wrap:wrap}
+.son-rapido button{font:700 13px var(--mono);border:2px solid var(--marinho);background:var(--papel);border-radius:10px;padding:4px 10px;cursor:pointer;color:var(--marinho)}
+.son-efeito{margin:0;font-size:13.5px;font-weight:700;color:var(--caju-esc);min-height:20px}
+.son-graf svg{width:100%;height:auto;display:block;overflow:visible;touch-action:pan-y}
+.son-graf .eixo{font:600 10.5px var(--mono);fill:var(--muted)}
+.son-leg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;margin-top:6px}
+.son-leg span::before{content:"";display:inline-block;width:14px;height:4px;border-radius:2px;margin-right:6px;vertical-align:3px;background:var(--c)}
+.son-leg span.tr::before{background:repeating-linear-gradient(90deg,var(--c) 0 4px,transparent 4px 7px)}
+.son-ler{font:600 12.5px var(--mono);color:var(--marinho);min-height:19px;margin:6px 0 0}
+.son-sim{display:flex;flex-direction:column;gap:10px}
+.son-sim .months button{text-transform:none;font-size:13px;padding:5px 11px}
+.son-sim .res{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.son-sim .res div{border:2px dashed var(--tracejado);border-radius:12px;padding:8px 10px}
+.son-sim .res small{display:block;font-size:12px;color:var(--muted)}.son-sim .res b{font:800 17px var(--display)}.son-sim .res i{display:block;font-style:normal;font-size:12.5px;color:var(--caju-esc);font-weight:700}
+.son-comb{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.son-comb .c{border:2.5px solid var(--marinho);border-radius:14px;padding:10px 12px;background:#fff;display:flex;flex-direction:column;gap:6px}
+.son-comb .c b{font:800 15px var(--display)}.son-comb .c p{margin:0;font-size:14px;overflow-wrap:anywhere}.son-comb .c small{font-size:12px;color:var(--muted)}
+.son-comb .c.vazio p{color:var(--muted);font-style:italic}
+.son-comb textarea{font:600 15px var(--body);color:var(--marinho);border:2.5px solid var(--marinho);border-radius:10px;padding:8px;width:100%;resize:vertical;min-height:64px}
+.son-hist .row{grid-template-columns:52px minmax(0,1fr) auto 30px}
+.son-hist .quem{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;background:var(--c)}
+.son-meses{display:flex;flex-direction:column;gap:8px;margin-bottom:6px}
+.son-mes{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:10px;align-items:center;font-size:13px}
+.son-mes .nm{font:700 12.5px var(--mono);text-transform:capitalize}
+.son-mes .tr{display:flex;height:14px;border:2px solid var(--marinho);border-radius:8px;overflow:hidden;background:var(--creme)}
+.son-mes .tr b{display:block;height:100%}
+.son-mes .v{font:600 12.5px var(--mono);white-space:nowrap}
+.son-festa{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;z-index:6;width:min(420px,calc(100% - 32px));background:var(--papel);border:3px solid var(--marinho);border-radius:16px;box-shadow:5px 5px 0 var(--marinho);padding:12px 14px;display:flex;gap:12px;align-items:center;font-weight:700;font-size:14px;transition:opacity .3s,transform .3s;pointer-events:none}
+.son-festa.on{opacity:1;transform:translate(-50%,0)}
+.son-festa svg{width:40px;height:37px;flex:none}
+@media (max-width:520px){.son-hero{grid-template-columns:minmax(0,1fr) 96px}.son-casa{width:96px}.son-prev{grid-template-columns:1fr 1fr}.son-prev div:last-child{grid-column:1/-1}.son-comb{grid-template-columns:1fr}}
 
 /* Cadeados */
 .locked{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
@@ -570,6 +649,30 @@ body.escuro .abas button[aria-pressed="true"]{background:var(--e-card2);color:va
       <p class="e-rodape" id="meuRodape"></p>
     </div>
   </div>
+  <div class="vis" id="visSonhos" hidden>
+    <div class="son-escolha" id="sonEscolha"></div>
+    <div class="carregando" id="sonCarregando">Abrindo os sonhos…</div>
+    <div class="vis" id="sonCorpo" hidden>
+      <div class="months" id="sonAbas" role="group" aria-label="O que ver">
+        <button type="button" data-son-aba="progresso" aria-pressed="true">Progresso</button>
+        <button type="button" data-son-aba="historico" aria-pressed="false">Histórico</button>
+      </div>
+      <div class="vis" id="sonProgresso">
+        <section class="panel son-hero" id="sonHero"></section>
+        <section class="panel son-ganho" id="sonGanho"></section>
+        <section class="panel lista" id="sonAporteCard"><h2 id="sonAporteTit">Fazer meu aporte</h2><div id="sonAporte"></div></section>
+        <section class="panel lista son-quem"><h2 style="margin:0">Quem está guardando</h2><div id="sonQuem"></div></section>
+        <section class="panel lista son-graf"><h2>Até a entrada</h2><p class="explica" id="sonGrafTxt"></p><div id="sonGraf"></div></section>
+        <section class="panel lista son-sim"><h2 style="margin:0">E se a Valesca colocasse por mês…</h2><p class="explica" style="margin:0">Só uma simulação: ninguém fica preso a esse valor.</p><div id="sonSim"></div></section>
+        <section class="panel lista"><h2>O combinado de cada um</h2><p class="explica">Uma frase sobre a sua parte, do seu jeito. Pode mudar quando quiser.</p><div id="sonComb"></div></section>
+      </div>
+      <div class="vis" id="sonHistorico" hidden>
+        <section class="panel lista son-hist"><h2>Mês a mês</h2><div class="son-meses" id="sonMeses"></div></section>
+        <section class="panel lista son-hist"><h2>Cada aporte</h2><div class="months filtros" id="sonFiltro" role="group" aria-label="De quem"></div><div id="sonLista"></div></section>
+      </div>
+      <p class="e-rodape" id="sonRodape" style="text-align:center;color:var(--muted);font-size:12.5px;margin:0"></p>
+    </div>
+  </div>
   <div class="vis" id="visSaude" hidden>
     <div class="e-meses s-pessoas" id="sauPessoas" role="group" aria-label="De quem"></div>
     <div class="carregando" id="sauCarregando">Abrindo a agenda de saúde…</div>
@@ -601,8 +704,7 @@ var EXPLICA = {
   dela: 'O que a Valesca gastou por conta própria.'
 };
 var CADEADOS = [
-  ['Viagens', 'China 2028 e as próximas', 'Viagens? Só se eu for na mala. Volta logo.'],
-  ['Sonhos', 'O que a gente quer conquistar', 'Sonhos ainda tão dormindo. Igual eu.']
+  ['Viagens', 'China 2028 e as próximas', 'Viagens? Só se eu for na mala. Volta logo.']
 ];
 var CORES = ['#e8892f', '#1f2a44', '#f2b84b', '#e98a8f', '#7a8fc4', '#c96a17', '#8fb59a', '#b9a37e'];
 
@@ -626,7 +728,7 @@ function chamar(fn, args) {
 function servidor(ok, falha) {
   var erro = falha || function (e) { mostrarLogin('Deu erro: ' + (e && e.message ? e.message : e), true); };
   var api = {};
-  ['entrar', 'sair', 'dados', 'marcarPago', 'editarLancamento', 'buscarCompras', 'votarLimites', 'registrarPush', 'saude', 'saudeSalvar', 'saudeApagar', 'agenda', 'agendaSalvar', 'agendaApagar', 'situacao', 'repassar', 'atualizarPessoal', 'classificarExtrato'].forEach(function (fn) {
+  ['entrar', 'sair', 'dados', 'marcarPago', 'editarLancamento', 'buscarCompras', 'votarLimites', 'registrarPush', 'saude', 'saudeSalvar', 'saudeApagar', 'agenda', 'agendaSalvar', 'agendaApagar', 'sonhos', 'sonhosAportar', 'sonhosApagar', 'sonhosCombinar', 'situacao', 'repassar', 'atualizarPessoal', 'classificarExtrato'].forEach(function (fn) {
     api[fn] = function () { chamar(fn, Array.prototype.slice.call(arguments)).then(ok, erro); };
   });
   return api;
@@ -677,7 +779,7 @@ function receber(r, manterMes) {
   r.meses.forEach(function (m, i) { if (m.chave === chaveAntes) estado.atual = i; });
   if (!manterMes) { estado.filtro = 'parte'; estado.editando = null; }
   $('carregando').hidden = true; $('telaLogin').hidden = true; $('app').hidden = false;
-  estado.temSaude = !!r.temSaude; estado.temAgenda = !!r.temAgenda; estado.agenda = r.agenda || null;
+  estado.temSaude = !!r.temSaude; estado.temAgenda = !!r.temAgenda; estado.agenda = r.agenda || null; estado.temSonhos = !!r.temSonhos; estado.sonhos = r.sonhos || null;
   if (!manterMes) trocarAba('inicio');
   desenhar(false);
 }
@@ -693,7 +795,7 @@ function trocarAba(qual) {
   if (qual !== 'saude' && meu.aba === 'saude') limparSaude();
   if (qual !== 'agenda' && meu.aba === 'agenda') limparAgenda();
   meu.aba = qual;
-  $('visInicio').hidden = qual !== 'inicio'; $('visCasal').hidden = qual !== 'casal'; $('visMeu').hidden = qual !== 'meu'; $('visSaude').hidden = qual !== 'saude'; $('visAgenda').hidden = qual !== 'agenda';
+  $('visInicio').hidden = qual !== 'inicio'; $('visCasal').hidden = qual !== 'casal'; $('visMeu').hidden = qual !== 'meu'; $('visSaude').hidden = qual !== 'saude'; $('visAgenda').hidden = qual !== 'agenda'; $('visSonhos').hidden = qual !== 'sonhos';
   $('btnMenu').hidden = qual === 'inicio';
   $('btnSair').hidden = qual !== 'inicio'; $('oi').parentNode.hidden = qual === 'inicio';
   var escuro = qual === 'meu' || qual === 'saude';
@@ -703,6 +805,7 @@ function trocarAba(qual) {
   if (qual === 'meu' && !meu.dados) buscarMeu(null);
   if (qual === 'saude') buscarSaude();
   if (qual === 'agenda') buscarAgenda();
+  if (qual === 'sonhos') buscarSonhos();
   if (estado.velho && (qual === 'inicio' || qual === 'casal')) {   // algo mudou na agenda ou na saúde: atualiza resumos e limites
     estado.velho = false;
     servidor(function (r) { if (r.ok) receber(r, true); }, function () {}).dados(estado.token);
@@ -1214,10 +1317,11 @@ var ICO = {
   casal: '<rect x="3" y="6" width="18" height="13" rx="2.5"/><path d="M3 10.5h18M7 15h4"/>',
   saude: '<path d="M12 20s-7-4.4-7-9.6A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.4C19 15.6 12 20 12 20z"/><path d="M8.5 12.5h2l1-2 1.5 4 1-2h1.5"/>',
   agenda: '<rect x="4" y="5.5" width="16" height="14" rx="2.5"/><path d="M8 3.5v4M16 3.5v4M4 10.5h16"/><circle cx="9" cy="14.5" r="1"/><circle cx="15" cy="14.5" r="1"/>',
-  meu: '<path d="M4 19V10M10 19V5M16 19v-6M21 19H3"/>'
+  meu: '<path d="M4 19V10M10 19V5M16 19v-6M21 19H3"/>',
+  sonhos: '<path d="M3.5 11.5 12 4.5l8.5 7"/><path d="M6 10v9.5h12V10"/><path d="M12 17.2s-3-1.8-3-3.8a1.6 1.6 0 0 1 3-.8 1.6 1.6 0 0 1 3 .8c0 2-3 3.8-3 3.8z"/>'
 };
 function desenharInicio() {
-  var papel = estado.usuario.papel, T = TEXTOS[papel] || TEXTOS.alex, m = estado.meses[estado.atual], L = estado.limites, H = estado.saude, A = estado.agenda;
+  var papel = estado.usuario.papel, Sn = estado.sonhos, T = TEXTOS[papel] || TEXTOS.alex, m = estado.meses[estado.atual], L = estado.limites, H = estado.saude, A = estado.agenda;
   var agora = new Date(), dia = agora.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
   $('capaOi').textContent = T.oi; $('capaDia').textContent = dia.charAt(0).toUpperCase() + dia.slice(1);
   var fin = m ? T.titulo + ' ' + brl(m.valor) + ' em ' + m.nome : 'Nada lançado ainda';
@@ -1235,6 +1339,7 @@ function desenharInicio() {
   $('menu').innerHTML = item('casal', 'Financeiro', fin, finSub, apertado > 0) +
     (estado.temSaude ? item('saude', 'Saúde', saTxt, saSub, H && (H.atrasados > 0 || (H.parceiro && H.parceiro.length > 0))) : '') +
     (estado.temAgenda ? item('agenda', 'Agenda', agTxt, agSub, A && A.hoje > 0) : '') +
+    (estado.temSonhos ? item('sonhos', 'Sonhos', Sn ? 'Casa: ' + brl(Sn.total) + ' guardados · ' + Math.floor(Sn.pct * 100) + '% da entrada' : 'A casa de vocês, passo a passo', Sn && Sn.noMes ? brl(Sn.noMes) + ' guardados este mês · carro ainda trancado' : 'Carro ainda trancado', false) : '') +
     (souAlex() ? item('meu', 'Minha situação', 'Sua planilha pessoal, mês a mês', 'Só você vê esta parte', false) : '');
 }
 $('menu').addEventListener('click', function (ev) { var b = ev.target.closest('[data-ir]'); if (b) { trocarAba(b.dataset.ir); window.scrollTo({ top: 0, behavior: 'smooth' }); } });
@@ -1335,6 +1440,283 @@ $('visAgenda').addEventListener('submit', function (ev) {
   servidor(receberAgenda, function (e) { ag.erro = 'Não consegui salvar (' + (e && e.message ? e.message : e) + ').'; desenharAgenda(); })
     .agendaSalvar(estado.token, { id: f.dataset.id, titulo: v('titulo'), data: v('data'), hora: v('hora'), tipo: v('tipo'), orcamento: lerValor(v('orcamento')), gasto: lerValor(v('gasto')), nota: v('nota'), cat: v('cat') });
 });
+
+/* ---------- Sonhos: casa (e o carro, ainda trancado) ---------- */
+var SON_COR = { alex: '#1f2a44', valesca: '#e8892f' };
+var SON_NOME = { alex: 'Alex', valesca: 'Valesca' };
+var son = { dados: null, pedido: 0, aba: 'progresso', meta: 'base', sim: 200, filtro: 'todos', apagar: null, combEdit: false, erro: '' };
+var SON_ICO_CASA = '<svg class="ic2" viewBox="0 0 44 44" aria-hidden="true"><path d="M6 21 22 8l16 13" fill="none" stroke="#1f2a44" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 19v17h24V19" fill="#fffaf2" stroke="#1f2a44" stroke-width="3" stroke-linejoin="round"/><rect x="18.5" y="25" width="7" height="11" fill="#e8892f" stroke="#1f2a44" stroke-width="2.5"/></svg>';
+var SON_ICO_CARRO = '<svg class="ic2" viewBox="0 0 44 44" aria-hidden="true"><path d="M6 28v-5l4-8h22l5 8h1v5z" fill="#fffaf2" stroke="#1f2a44" stroke-width="3" stroke-linejoin="round"/><path d="M12 16h18l3 7H9z" fill="#bfe6ee" stroke="#1f2a44" stroke-width="2.5" stroke-linejoin="round"/><circle cx="13" cy="29" r="4" fill="#1f2a44"/><circle cx="31" cy="29" r="4" fill="#1f2a44"/></svg>';
+
+function buscarSonhos() {
+  var pedido = ++son.pedido;
+  desenharEscolha();
+  if (!son.dados) { $('sonCorpo').hidden = true; $('sonCarregando').hidden = false; $('sonCarregando').textContent = 'Abrindo os sonhos…'; }
+  servidor(function (r) { if (pedido === son.pedido) receberSonhos(r); }, function (e) { if (pedido === son.pedido) $('sonCarregando').textContent = 'Deu erro: ' + (e && e.message ? e.message : e); }).sonhos(estado.token);
+}
+function receberSonhos(r, depois) {
+  if (!r.ok) {
+    if (r.erro === 'sessao') { estado.token = null; guardar(null); return mostrarLogin(); }
+    if (son.dados) { son.erro = r.erro; return desenharSonhos(); }
+    $('sonCarregando').textContent = r.erro; return;
+  }
+  if (son.dados) estado.velho = true;
+  son.dados = r; son.erro = ''; son.apagar = null; son.combEdit = false;
+  $('sonCarregando').hidden = true; $('sonCorpo').hidden = false;
+  var tot = sonTotais();
+  estado.sonhos = { total: tot.total, pct: tot.total / r.plano.base.entrada, noMes: tot.noMes };
+  desenharSonhos();
+  if (depois) depois();
+  conferirMarco();
+}
+
+/* contas */
+function sonTotais() {
+  var D = son.dados, t = { total: 0, alex: 0, valesca: 0, noMes: 0, mesAlex: 0, mesValesca: 0 }, mes = D.hoje.slice(0, 7);
+  D.aportes.forEach(function (a) { t.total += a.valor; t[a.quem] += a.valor; if (a.data.slice(0, 7) === mes) { t.noMes += a.valor; t[a.quem === 'alex' ? 'mesAlex' : 'mesValesca'] += a.valor; } });
+  return t;
+}
+function mesesAte(S, C, alvo, r) {   // meses (com fração) até S chegar ao alvo, guardando C por mês com rendimento r
+  if (S >= alvo) return 0;
+  if (C <= 0 && S <= 0) return Infinity;
+  for (var n = 0; n < 1200; n++) { var p = S; S = S * (1 + r) + C; if (S >= alvo) return n + (alvo - p) / (S - p); }
+  return Infinity;
+}
+function mesQueVem(hoje, m) {   // 'ago/2031'
+  if (!isFinite(m)) return 'nunca';
+  var d = new Date(hoje.slice(0, 7) + '-15T12:00:00Z'); d.setUTCMonth(d.getUTCMonth() + Math.ceil(m - 1e-9));
+  return MESES_CURTOS[d.getUTCMonth()] + '/' + d.getUTCFullYear();
+}
+function tempoTxt(m) {   // 2,4 -> "2 meses e 12 dias"
+  if (!isFinite(m)) return 'muito tempo';
+  var dias = Math.round(m * 30.4);
+  if (dias < 1) return 'menos de 1 dia';
+  if (dias < 31) return dias + (dias === 1 ? ' dia' : ' dias');
+  var mm = Math.floor(dias / 30.4), dd = Math.round(dias - mm * 30.4);
+  var anos = Math.floor(mm / 12), resto = mm % 12;
+  var partes = [];
+  if (anos) partes.push(anos + (anos === 1 ? ' ano' : ' anos'));
+  if (resto) partes.push(resto + (resto === 1 ? ' mês' : ' meses'));
+  if (!anos && dd >= 3) partes.push(dd + ' dias');
+  return partes.join(' e ');
+}
+function ganhoDe(valor, meta) {   // quanto tempo um valor guardado a mais adianta a meta, no ritmo do Alex
+  var D = son.dados, P = D.plano, alvo = P[meta].entrada, S = sonTotais().total;
+  return mesesAte(S - valor, P.ritmoAlex, alvo, P.rendimento) - mesesAte(S, P.ritmoAlex, alvo, P.rendimento);
+}
+
+/* desenho */
+function desenharEscolha() {
+  var trancado = !(son.dados && son.dados.carroLiberado);
+  $('sonEscolha').innerHTML = '<button type="button" class="son-card" data-son="casa" aria-pressed="true">' + SON_ICO_CASA + '<span><b>Casa</b><small>Nosso cantinho</small></span></button>' +
+    '<button type="button" class="son-card' + (trancado ? ' trancado' : '') + '" data-son="carro" aria-pressed="false">' + SON_ICO_CARRO +
+    '<span><b>Carro</b><small>' + (trancado ? 'Ainda trancado' : 'Em breve') + '</small></span>' + (trancado ? PAD : '') +
+    '<span class="bubble"><svg viewBox="0 0 120 110"><use href="#cajuhead"/><use href="#cajuface"/></svg><span>Esse sonho ainda tá trancado. Primeiro a casa, depois a gente sai passear.</span></span></button>';
+}
+function casaSvg(pct) {   // casinha que vai enchendo de mel conforme a entrada chega perto
+  var p = Math.max(0, Math.min(1, pct)), topo = 34, base = 128, y = base - (base - topo) * p;
+  return '<svg class="son-casa" viewBox="0 0 150 140" role="img" aria-label="Casa ' + Math.round(p * 100) + '% cheia"><defs><clipPath id="sonClip"><path d="M18 60 75 14l57 46v68H18z"/></clipPath></defs>' +
+    '<path d="M18 60 75 14l57 46v68H18z" fill="#fffaf2"/>' +
+    '<rect class="agua" clip-path="url(#sonClip)" x="0" y="' + y.toFixed(1) + '" width="150" height="' + (140 - y).toFixed(1) + '" fill="#f2b84b"/>' +
+    '<path d="M18 60 75 14l57 46v68H18z" fill="none" stroke="#1f2a44" stroke-width="4.5" stroke-linejoin="round"/>' +
+    '<path d="M6 66 75 8l69 58" fill="none" stroke="#1f2a44" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>' +
+    '<rect x="62" y="92" width="26" height="36" rx="3" fill="#e8892f" stroke="#1f2a44" stroke-width="4"/><circle cx="82" cy="111" r="2.3" fill="#1f2a44"/>' +
+    '<rect x="30" y="72" width="22" height="20" rx="3" fill="#bfe6ee" stroke="#1f2a44" stroke-width="3.5"/><rect x="98" y="72" width="22" height="20" rx="3" fill="#bfe6ee" stroke="#1f2a44" stroke-width="3.5"/>' +
+    '<text x="75" y="58" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="19" fill="#1f2a44">' + Math.round(p * 100) + '%</text></svg>';
+}
+function desenharSonhos() {
+  var D = son.dados; if (!D) return;
+  desenharEscolha();
+  $('sonProgresso').hidden = son.aba !== 'progresso'; $('sonHistorico').hidden = son.aba !== 'historico';
+  Array.prototype.forEach.call($('sonAbas').querySelectorAll('button'), function (b) { b.setAttribute('aria-pressed', String(b.dataset.sonAba === son.aba)); });
+  if (son.aba === 'historico') desenharHistorico(); else desenharProgresso();
+  $('sonRodape').textContent = 'Previsão com o ritmo do Alex (' + brl(D.plano.ritmoAlex) + ' por mês) e rendimento estimado de ' + String(D.plano.rendimento * 100).replace('.', ',') + '% ao mês. Entrada inclui ITBI e cartório.';
+}
+function desenharProgresso() {
+  var D = son.dados, P = D.plano, M = P[son.meta], t = sonTotais(), eu = D.eu, pct = t.total / M.entrada;
+  var falta = Math.max(0, M.entrada - t.total), mAlex = mesesAte(t.total, P.ritmoAlex, M.entrada, P.rendimento);
+  var marcos = [0.1, 0.25, 0.5, 0.75, 1];
+  $('sonHero').innerHTML = '<div><div class="eyebrow">Guardado para a casa</div><div class="big">' + brl(t.total) + '</div>' +
+    '<p class="sub">' + (pct >= 1 ? 'Entrada completa!' : (Math.floor(pct * 1000) / 10).toString().replace('.', ',') + '% da entrada <span>de ' + brl(M.entrada) + '</span>') + '</p></div>' + casaSvg(pct) +
+    '<div class="son-metas months" role="group" aria-label="Qual casa">' + ['base', 'objetivo'].map(function (k) { return '<button type="button" data-son-meta="' + k + '" aria-pressed="' + (son.meta === k) + '">' + P[k].nome + '</button>'; }).join('') + '</div>' +
+    '<div class="son-marcos" aria-label="Marcos"><div class="trilho"><span class="enche" style="width:' + Math.min(100, pct * 100).toFixed(1) + '%"></span>' +
+    marcos.map(function (m) { return '<span class="m' + (pct >= m ? ' ok' : '') + '" style="left:' + (m * 100) + '%" title="' + (m * 100) + '%"><svg viewBox="0 0 40 40"><use href="#paw"/></svg><span>' + (m * 100) + '%</span></span>'; }).join('') + '</div></div>' +
+    '<div class="son-prev" style="margin-top:14px"><div><small>Falta</small><b>' + brl(falta) + '</b></div><div><small>Meses</small><b>' + (isFinite(mAlex) ? Math.ceil(mAlex) : '—') + '</b></div><div><small>Previsão</small><b>' + mesQueVem(D.hoje, mAlex) + '</b></div></div>';
+
+  var g = ganhoDe(t.valesca, son.meta);
+  var dias100 = Math.max(1, Math.round(-ganhoDe(-100, son.meta) * 30.4));
+  $('sonGanho').innerHTML = t.valesca > 0
+    ? '<div class="n">' + tempoTxt(g) + '</div><p>' + (eu === 'valesca' ? 'é quanto <b>você</b> já adiantou a casa' : 'é quanto a <b>Valesca</b> já adiantou a casa') + ' com ' + brl(t.valesca) + ' guardados. Cada R$ 100 a mais adianta uns ' + dias100 + ' dias.</p>'
+    : '<div class="n">' + dias100 + ' dias</div><p>' + (eu === 'valesca' ? 'é o quanto cada R$ 100 seu adianta a casa. Sem compromisso: quando der, deu.' : 'é o quanto cada R$ 100 da Valesca adianta a casa, quando ela puder.') + '</p>';
+
+  $('sonAporteTit').textContent = eu === 'valesca' ? 'Fazer meu aporte' : 'Lançar um aporte meu';
+  if (!$('sonAporte').querySelector('form')) {
+    $('sonAporte').innerHTML = '<form class="son-form" id="sonForm"><div class="son-rapido">' + [50, 100, 200, 300].map(function (v) { return '<button type="button" data-son-rapido="' + v + '">R$ ' + v + '</button>'; }).join('') + '</div>' +
+      '<div class="dupla"><label>Quanto (R$)<input name="valor" inputmode="decimal" placeholder="0,00" required></label><label>Quando<input name="data" type="date" value="' + D.hoje + '" max="' + D.hoje + '"></label></div>' +
+      '<label>Observação<input name="obs" maxlength="140" placeholder="Ex.: sobrou do mês, 13º, presente…"></label>' +
+      '<p class="son-efeito" id="sonEfeito"></p><p class="ederro" id="sonErro"></p><div class="edbtns"><button type="submit" class="btn">Guardar na casa</button></div></form>';
+  }
+  $('sonErro').textContent = son.erro || '';
+  efeitoAporte();
+
+  var tot = t.alex + t.valesca || 1;
+  $('sonQuem').innerHTML = '<div class="son-split" role="img" aria-label="Alex ' + Math.round(t.alex / tot * 100) + '%, Valesca ' + Math.round(t.valesca / tot * 100) + '%">' +
+    ['alex', 'valesca'].filter(function (q) { return t[q] > 0; }).map(function (q) { return '<b style="width:' + (t[q] / tot * 100).toFixed(2) + '%;background:' + SON_COR[q] + '"></b>'; }).join('') + '</div>' +
+    '<div class="son-pess">' + ['alex', 'valesca'].map(function (q) {
+      var mes = q === 'alex' ? t.mesAlex : t.mesValesca;
+      return '<div style="--c:' + SON_COR[q] + '"><b>' + SON_NOME[q] + (q === eu ? ' (você)' : '') + '</b><span>' + brl(t[q]) + '</span><small>' + Math.round(t[q] / tot * 100) + '% do total · ' + (mes ? brl(mes) + ' este mês' : 'nada este mês') + '</small></div>';
+    }).join('') + '</div>';
+
+  desenharSim();
+  desenharGrafico();
+  desenharComb();
+}
+function efeitoAporte() {
+  var f = $('sonForm'); if (!f || !son.dados) return;
+  var v = lerValor(f.elements.valor.value);
+  $('sonEfeito').textContent = v ? 'Esse aporte adianta a ' + minus(son.dados.plano[son.meta].nome) + ' em ' + tempoTxt(-ganhoDe(-v, son.meta)) + '.' : '';
+}
+function desenharSim() {
+  var D = son.dados, P = D.plano, t = sonTotais(), op = [0, 100, 200, 300, 500];
+  var linha = function (k) {
+    var sem = mesesAte(t.total, P.ritmoAlex, P[k].entrada, P.rendimento), com = mesesAte(t.total, P.ritmoAlex + son.sim, P[k].entrada, P.rendimento);
+    return '<div><small>' + P[k].nome + '</small><b>' + mesQueVem(D.hoje, com) + '</b><i>' + (son.sim ? tempoTxt(sem - com) + ' antes' : 'só no ritmo do Alex') + '</i></div>';
+  };
+  $('sonSim').innerHTML = '<div class="months" role="group" aria-label="Quanto por mês">' + op.map(function (v) { return '<button type="button" data-son-sim="' + v + '" aria-pressed="' + (son.sim === v) + '">' + (v ? 'R$ ' + v : 'Nada') + '</button>'; }).join('') + '</div>' +
+    '<div class="res">' + linha('base') + linha('objetivo') + '</div>';
+}
+function serieReal() {   // total acumulado no fim de cada mês, por pessoa
+  var D = son.dados, ap = D.aportes; if (!ap.length) return [];
+  var ini = ap[0].data.slice(0, 7), fim = D.hoje.slice(0, 7), out = [], a = 0, v = 0, i = 0;
+  for (var m = ini; m <= fim; m = proxMes(m)) {
+    while (i < ap.length && ap[i].data.slice(0, 7) <= m) { if (ap[i].quem === 'alex') a += ap[i].valor; else v += ap[i].valor; i++; }
+    out.push({ mes: m, alex: a, valesca: v });
+  }
+  return out;
+}
+function minus(t) { return t.charAt(0).toLowerCase() + t.slice(1); }
+function proxMes(m) { var y = +m.slice(0, 4), mm = +m.slice(5, 7) + 1; if (mm > 12) { mm = 1; y++; } return y + '-' + (mm < 10 ? '0' : '') + mm; }
+function nomeMes(m) { return MESES_CURTOS[+m.slice(5, 7) - 1] + '/' + m.slice(2, 4); }
+function desenharGrafico() {
+  var D = son.dados, P = D.plano, M = P[son.meta], t = sonTotais(), real = serieReal();
+  if (!real.length) { $('sonGraf').innerHTML = '<p class="vazio">Ainda não tem aporte.</p>'; return; }
+  var proj = function (C) { var S = t.total, m = D.hoje.slice(0, 7), out = [{ mes: m, v: S }]; for (var n = 0; n < 1200 && S < M.entrada; n++) { S = S * (1 + P.rendimento) + C; m = proxMes(m); out.push({ mes: m, v: Math.min(S, M.entrada * 1.02) }); } return out; };
+  var pA = proj(P.ritmoAlex), pS = son.sim ? proj(P.ritmoAlex + son.sim) : null;
+  var meses = real.map(function (x) { return x.mes; }); pA.slice(1).forEach(function (x) { meses.push(x.mes); });
+  var W = Math.max(300, $('sonGraf').clientWidth || 640), H = 220, L = 46, R = 10, T = 12, B = 26, n = meses.length;
+  var X = function (i) { return L + (W - L - R) * (n > 1 ? i / (n - 1) : 0); }, Y = function (v) { return T + (H - T - B) * (1 - v / (M.entrada * 1.05)); };
+  var idx = {}; meses.forEach(function (m, i) { idx[m] = i; });
+  var h = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Evolução do guardado até a entrada">';
+  [0, 0.25, 0.5, 0.75, 1].forEach(function (f) { var y = Y(M.entrada * f); h += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y + '" y2="' + y + '" stroke="#e3d8c5" stroke-width="1"/><text class="eixo" x="' + (L - 6) + '" y="' + (y + 3.5) + '" text-anchor="end">' + (M.entrada * f >= 1000 ? Math.round(M.entrada * f / 1000) + ' mil' : '0') + '</text>'; });
+  h += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(M.entrada) + '" y2="' + Y(M.entrada) + '" stroke="#c96a17" stroke-width="2" stroke-dasharray="2 4"/><text class="eixo" x="' + (W - R) + '" y="' + (Y(M.entrada) - 5) + '" text-anchor="end" style="fill:#c96a17">entrada</text>';
+  var area = function (f, cor) { var pts = real.map(function (x) { return X(idx[x.mes]) + ',' + Y(f(x)); }); return '<path d="M' + X(idx[real[0].mes]) + ',' + Y(0) + ' L' + pts.join(' L') + ' L' + X(idx[real[real.length - 1].mes]) + ',' + Y(0) + 'Z" fill="' + cor + '"/>'; };
+  h += area(function (x) { return x.alex + x.valesca; }, '#e8892f') + area(function (x) { return x.alex; }, '#1f2a44');
+  var linha = function (pp, cor) { return '<path d="M' + pp.map(function (x) { return X(idx[x.mes] != null ? idx[x.mes] : n - 1) + ',' + Y(x.v); }).join(' L') + '" fill="none" stroke="' + cor + '" stroke-width="2.5" stroke-dasharray="6 5" stroke-linecap="round"/>'; };
+  h += linha(pA, '#1f2a44'); if (pS) h += linha(pS, '#e8892f');
+  var passo = Math.max(1, Math.ceil(n / Math.max(3, Math.floor((W - L) / 70))));
+  meses.forEach(function (m, i) { if ((i % passo === 0 && n - 1 - i >= passo * 0.7) || i === n - 1) h += '<text class="eixo" x="' + X(i) + '" y="' + (H - 6) + '" text-anchor="' + (i === 0 ? 'start' : i === n - 1 ? 'end' : 'middle') + '">' + nomeMes(m) + '</text>'; });
+  h += '<line id="sonCursor" x1="0" x2="0" y1="' + T + '" y2="' + (H - B) + '" stroke="#1f2a44" stroke-width="1.5" visibility="hidden"/><rect id="sonToque" x="' + L + '" y="0" width="' + (W - L - R) + '" height="' + H + '" fill="transparent"/></svg>';
+  $('sonGraf').innerHTML = h + '<div class="son-leg"><span style="--c:#1f2a44">Alex</span><span style="--c:#e8892f">Valesca</span><span class="tr" style="--c:#1f2a44">Previsão no ritmo do Alex</span>' + (pS ? '<span class="tr" style="--c:#e8892f">Com R$ ' + son.sim + '/mês da Valesca</span>' : '') + '</div><p class="son-ler" id="sonLer">Toque no gráfico para ver cada mês.</p>';
+  $('sonGrafTxt').textContent = 'O cheio é o que já foi guardado; o tracejado é a previsão até a entrada da ' + minus(M.nome) + '.';
+  var mapa = {}; real.forEach(function (x) { mapa[x.mes] = { real: x }; }); pA.forEach(function (x) { (mapa[x.mes] = mapa[x.mes] || {}).a = x.v; }); if (pS) pS.forEach(function (x) { (mapa[x.mes] = mapa[x.mes] || {}).s = x.v; });
+  var ler = function (ev) {
+    var r = $('sonToque').getBoundingClientRect(), fx = (ev.clientX - r.left) / r.width, i = Math.max(0, Math.min(n - 1, Math.round(fx * (n - 1)))), m = meses[i], k = mapa[m] || {};
+    var c = $('sonCursor'); c.setAttribute('x1', X(i)); c.setAttribute('x2', X(i)); c.setAttribute('visibility', 'visible');
+    $('sonLer').textContent = nomeMes(m) + ': ' + (k.real ? brl(k.real.alex + k.real.valesca) + ' guardados (Alex ' + brl(k.real.alex) + ', Valesca ' + brl(k.real.valesca) + ')' : 'previsão ' + brl(k.a || M.entrada) + (k.s != null ? ', com a Valesca ' + brl(k.s) : ''));
+  };
+  $('sonToque').addEventListener('pointermove', ler); $('sonToque').addEventListener('pointerdown', ler);
+}
+function desenharComb() {
+  var D = son.dados, C = D.combinado || {};
+  $('sonComb').innerHTML = '<div class="son-comb">' + ['alex', 'valesca'].map(function (q) {
+    var c = C[q], meu = q === D.eu;
+    if (meu && son.combEdit) return '<form class="c" id="sonCombForm"><b>' + SON_NOME[q] + ' (você)</b><textarea name="t" maxlength="200" placeholder="' + (q === 'valesca' ? 'Ex.: quando sobrar no mês, coloco o que der.' : 'Ex.: separo uns R$ 800 todo mês.') + '">' + esc(c ? c.texto : '') + '</textarea><div class="edbtns"><button type="submit" class="btn mini">Salvar</button><button type="button" class="sair" data-son-comb="fechar">Cancelar</button></div></form>';
+    return '<div class="c' + (c ? '' : ' vazio') + '"><b>' + SON_NOME[q] + (meu ? ' (você)' : '') + '</b><p>' + (c ? '“' + esc(c.texto) + '”' : (meu ? 'Você ainda não escreveu nada.' : 'Ainda não escreveu nada.')) + '</p>' +
+      (c ? '<small>desde ' + dBR(c.quando) + '</small>' : '') + (meu ? '<button type="button" class="sair" data-son-comb="editar" style="align-self:flex-start">' + (c ? 'Mudar' : 'Escrever') + '</button>' : '') + '</div>';
+  }).join('') + '</div>';
+}
+function desenharHistorico() {
+  var D = son.dados, eu = D.eu, porMes = {};
+  var ini = D.aportes.filter(function (a) { return a.id === 'inicio'; })[0];
+  var pInicio = ini ? '<p class="explica" style="margin:4px 0 0">Ponto de partida: ' + brl(ini.valor) + ' que o Alex já tinha separado para a casa em ' + dBR(ini.data) + '.</p>' : '';
+  D.aportes.forEach(function (a) { if (a.id === 'inicio') return; var m = a.data.slice(0, 7); porMes[m] = porMes[m] || { alex: 0, valesca: 0 }; porMes[m][a.quem] += a.valor; });
+  var ms = Object.keys(porMes).sort().reverse(), max = ms.reduce(function (s, m) { return Math.max(s, porMes[m].alex + porMes[m].valesca); }, 0) || 1;
+  $('sonMeses').innerHTML = ms.length ? ms.map(function (m) {
+    var x = porMes[m], tot = x.alex + x.valesca;
+    return '<div class="son-mes"><span class="nm">' + nomeMes(m) + '</span><span class="tr" style="width:' + Math.max(4, tot / max * 100).toFixed(1) + '%">' +
+      ['alex', 'valesca'].filter(function (q) { return x[q] > 0; }).map(function (q) { return '<b style="width:' + (x[q] / tot * 100).toFixed(1) + '%;background:' + SON_COR[q] + '" title="' + SON_NOME[q] + ' ' + brl(x[q]) + '"></b>'; }).join('') +
+      '</span><span class="v">' + brl(tot) + '</span></div>';
+  }).join('') + pInicio + '<div class="son-leg"><span style="--c:#1f2a44">Alex</span><span style="--c:#e8892f">Valesca</span></div>' : '<p class="vazio">Nenhum aporte depois do ponto de partida ainda.</p>' + pInicio;
+  $('sonFiltro').innerHTML = [['todos', 'Todos'], ['alex', 'Alex'], ['valesca', 'Valesca']].map(function (f) { return '<button type="button" data-son-filtro="' + f[0] + '" aria-pressed="' + (son.filtro === f[0]) + '">' + f[1] + '</button>'; }).join('');
+  var lista = D.aportes.filter(function (a) { return son.filtro === 'todos' || a.quem === son.filtro; }).slice().reverse();
+  $('sonLista').innerHTML = (son.erro ? '<p class="ederro">' + esc(son.erro) + '</p>' : '') + (lista.length ? lista.map(function (a) {
+    var meu = a.quem === eu;
+    return '<div class="row"><span class="d">' + a.data.slice(8, 10) + '/' + a.data.slice(5, 7) + '<br>' + a.data.slice(0, 4) + '</span><span class="t"><span class="quem" style="--c:' + SON_COR[a.quem] + '"></span>' + SON_NOME[a.quem] +
+      '<small>' + (a.obs ? esc(a.obs) : 'Sem observação') + '</small></span><span class="v">' + brl(a.valor) + '</span>' +
+      (meu ? '<button type="button" class="ed" data-son-apagar="' + esc(a.id) + '" aria-label="Apagar" title="' + (son.apagar === a.id ? 'Toque de novo para apagar' : 'Apagar') + '" style="' + (son.apagar === a.id ? 'background:#fbe1e3;border-color:#b3404a' : '') + '">' + (son.apagar === a.id ? '✓' : '✕') + '</button>' : '<span></span>') + '</div>';
+  }).join('') + (son.apagar ? '<p class="explica" style="margin:8px 0 0">Toque no ✓ para confirmar que quer apagar.</p>' : '') : '<p class="vazio">Nenhum aporte aqui.</p>');
+}
+function festa(txt) {
+  var el = $('sonFesta');
+  if (!el) { el = document.createElement('div'); el.id = 'sonFesta'; el.className = 'son-festa'; el.setAttribute('role', 'status'); document.body.appendChild(el); }
+  el.innerHTML = '<svg viewBox="0 0 120 110" aria-hidden="true"><use href="#cajuhead"/><use href="#cajuface"/></svg><span></span>';
+  el.lastChild.textContent = txt; el.classList.add('on');
+  clearTimeout(festa.t); festa.t = setTimeout(function () { el.classList.remove('on'); }, 4200);
+  chuvaDePatinhas();
+}
+function conferirMarco() {   // comemora uma vez por pessoa cada marco novo da casa base
+  var pct = sonTotais().total / son.dados.plano.base.entrada, marcos = [0.1, 0.25, 0.5, 0.75, 1], k = 'qg_marco_' + son.dados.eu, visto = 0;
+  try { visto = Number(localStorage.getItem(k) || 0); } catch (e) {}
+  var atingido = marcos.filter(function (m) { return pct >= m; }).pop() || 0;
+  if (atingido > visto) {
+    try { localStorage.setItem(k, String(atingido)); } catch (e) {}
+    if (visto || atingido > 0.1) festa(atingido >= 1 ? 'A ENTRADA DA CASA ESTÁ COMPLETA! Miau!' : 'Marco novo: ' + Math.round(atingido * 100) + '% da entrada da casa! Miau!');
+    else festa('Marco novo: 10% da entrada da casa! Miau!');
+  }
+}
+$('visSonhos').addEventListener('click', function (ev) {
+  var b = ev.target.closest('button'); if (!b) return;
+  if (b.dataset.son === 'carro' && !(son.dados && son.dados.carroLiberado)) {
+    b.classList.remove('shake'); void b.offsetWidth; b.classList.add('shake', 'talk');
+    clearTimeout(b._t); b._t = setTimeout(function () { b.classList.remove('talk'); }, 2600); return;
+  }
+  if (!son.dados) return;
+  if (b.dataset.sonAba) { son.aba = b.dataset.sonAba; son.apagar = null; }
+  else if (b.dataset.sonMeta) son.meta = b.dataset.sonMeta;
+  else if (b.dataset.sonSim != null) son.sim = Number(b.dataset.sonSim);
+  else if (b.dataset.sonFiltro) son.filtro = b.dataset.sonFiltro;
+  else if (b.dataset.sonRapido) { $('sonForm').elements.valor.value = b.dataset.sonRapido; return efeitoAporte(); }
+  else if (b.dataset.sonComb) son.combEdit = b.dataset.sonComb === 'editar';
+  else if (b.dataset.sonApagar) {
+    if (son.apagar !== b.dataset.sonApagar) son.apagar = b.dataset.sonApagar;
+    else { var id = son.apagar; son.apagar = null; return servidor(receberSonhos).sonhosApagar(estado.token, id); }
+  } else return;
+  desenharSonhos();
+});
+$('visSonhos').addEventListener('input', function (ev) { if (ev.target.name === 'valor') efeitoAporte(); });
+$('visSonhos').addEventListener('submit', function (ev) {
+  ev.preventDefault();
+  var f = ev.target, b = f.querySelector('[type=submit]');
+  if (f.id === 'sonCombForm') {
+    b.disabled = true; b.textContent = 'Salvando…';
+    return servidor(receberSonhos, function (e) { son.erro = 'Não consegui salvar (' + (e && e.message ? e.message : e) + ').'; desenharSonhos(); }).sonhosCombinar(estado.token, f.elements.t.value);
+  }
+  var v = lerValor(f.elements.valor.value);
+  if (!v) { $('sonErro').textContent = 'Diga quanto você colocou.'; return; }
+  var ganho = -ganhoDe(-v, son.meta);
+  b.disabled = true; b.textContent = 'Guardando…';
+  servidor(function (r) {
+    receberSonhos(r, function () {
+      if (!r.ok) return;
+      f.reset(); f.elements.data.value = son.dados.hoje; efeitoAporte();
+      festa(brl(v) + ' guardados! A casa chegou ' + tempoTxt(ganho) + ' mais perto.');
+    });
+    b.disabled = false; b.textContent = 'Guardar na casa';
+  }, function (e) { b.disabled = false; b.textContent = 'Guardar na casa'; $('sonErro').textContent = 'Não consegui salvar (' + (e && e.message ? e.message : e) + ').'; })
+    .sonhosAportar(estado.token, { valor: v, data: f.elements.data.value, obs: f.elements.obs.value });
+});
+var sonLargura = 0;
+window.addEventListener('resize', function () { if (meu.aba === 'sonhos' && son.dados && son.aba === 'progresso') { var w = $('sonGraf').clientWidth; if (Math.abs(w - sonLargura) > 30) { sonLargura = w; desenharGrafico(); } } });
 
 /* ---------- Sininho: o que mudou desde a última vez que esta pessoa abriu ---------- */
 function vistos(novo) {
